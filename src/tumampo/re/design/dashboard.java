@@ -5,8 +5,9 @@
  */
 package tumampo.re.design;
 
+import Internalpages.Userpage;
 import java.awt.Color;
-
+import internalpages.*;
 /**
  *
  * @author SCC-COMLAB
@@ -41,7 +42,7 @@ public class dashboard extends javax.swing.JFrame {
         reports = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         head = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        maindesktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +69,9 @@ public class dashboard extends javax.swing.JFrame {
         navigator.add(dashpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 60));
 
         userpane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userpaneMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 userpaneMouseEntered(evt);
             }
@@ -109,21 +113,21 @@ public class dashboard extends javax.swing.JFrame {
         body.add(head);
         head.setBounds(160, 20, 640, 50);
 
-        jDesktopPane1.setBackground(new java.awt.Color(0, 51, 51));
+        maindesktop.setBackground(new java.awt.Color(0, 51, 51));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout maindesktopLayout = new javax.swing.GroupLayout(maindesktop);
+        maindesktop.setLayout(maindesktopLayout);
+        maindesktopLayout.setHorizontalGroup(
+            maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 640, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        maindesktopLayout.setVerticalGroup(
+            maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 430, Short.MAX_VALUE)
         );
 
-        body.add(jDesktopPane1);
-        jDesktopPane1.setBounds(160, 70, 640, 430);
+        body.add(maindesktop);
+        maindesktop.setBounds(160, 70, 640, 430);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,6 +173,12 @@ public class dashboard extends javax.swing.JFrame {
         reports.setBackground(navbar);
     }//GEN-LAST:event_reportsMouseExited
 
+    private void userpaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userpaneMouseClicked
+        // TODO add your handling code here:
+        Userpage up = new Userpage();
+        maindesktop.add(up).setVisible(true);
+    }//GEN-LAST:event_userpaneMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -208,10 +218,10 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel body;
     private javax.swing.JPanel dashpane;
     private javax.swing.JPanel head;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JDesktopPane maindesktop;
     private javax.swing.JPanel navigator;
     private javax.swing.JPanel reports;
     private javax.swing.JPanel userpane;
