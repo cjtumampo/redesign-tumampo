@@ -8,6 +8,7 @@ package tumampo.re.design;
 import Internalpages.Userpage;
 import java.awt.Color;
 import internalpages.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author SCC-COMLAB
@@ -43,8 +44,10 @@ public class dashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         head = new javax.swing.JPanel();
         maindesktop = new javax.swing.JDesktopPane();
+        closes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         body.setBackground(new java.awt.Color(0, 153, 153));
         body.setLayout(null);
@@ -106,12 +109,12 @@ public class dashboard extends javax.swing.JFrame {
         navigator.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 160, 60));
 
         body.add(navigator);
-        navigator.setBounds(0, 70, 160, 430);
+        navigator.setBounds(0, 70, 160, 550);
 
         head.setBackground(new java.awt.Color(0, 102, 102));
         head.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         body.add(head);
-        head.setBounds(160, 20, 640, 50);
+        head.setBounds(160, 30, 800, 40);
 
         maindesktop.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -119,28 +122,40 @@ public class dashboard extends javax.swing.JFrame {
         maindesktop.setLayout(maindesktopLayout);
         maindesktopLayout.setHorizontalGroup(
             maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
         maindesktopLayout.setVerticalGroup(
             maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         body.add(maindesktop);
-        maindesktop.setBounds(160, 70, 640, 430);
+        maindesktop.setBounds(160, 70, 790, 550);
+
+        closes.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        closes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        closes.setText("x");
+        closes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closesMouseClicked(evt);
+            }
+        });
+        body.add(closes);
+        closes.setBounds(910, 0, 34, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
+            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void dashpaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpaneMouseEntered
@@ -179,6 +194,13 @@ public class dashboard extends javax.swing.JFrame {
         maindesktop.add(up).setVisible(true);
     }//GEN-LAST:event_userpaneMouseClicked
 
+    private void closesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closesMouseClicked
+        // TODO add your handling code here:
+        int c = JOptionPane.showConfirmDialog(null, "Confirm Exit?");
+        if (c == JOptionPane.YES_OPTION){
+        System.exit(0);}
+    }//GEN-LAST:event_closesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +238,7 @@ public class dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private javax.swing.JLabel closes;
     private javax.swing.JPanel dashpane;
     private javax.swing.JPanel head;
     private javax.swing.JLabel jLabel1;
