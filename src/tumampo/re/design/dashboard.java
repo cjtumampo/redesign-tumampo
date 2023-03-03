@@ -5,6 +5,7 @@
  */
 package tumampo.re.design;
 
+import Internalpages.DashBoardPage;
 import Internalpages.Userpage;
 import java.awt.Color;
 import internalpages.*;
@@ -55,6 +56,9 @@ public class dashboard extends javax.swing.JFrame {
         navigator.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dashpane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashpaneMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 dashpaneMouseEntered(evt);
             }
@@ -200,6 +204,12 @@ public class dashboard extends javax.swing.JFrame {
         if (c == JOptionPane.YES_OPTION){
         System.exit(0);}
     }//GEN-LAST:event_closesMouseClicked
+
+    private void dashpaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpaneMouseClicked
+        // TODO add your handling code here:
+        DashBoardPage dbp = new DashBoardPage();
+        maindesktop.add(dbp).setVisible(true);
+    }//GEN-LAST:event_dashpaneMouseClicked
 
     /**
      * @param args the command line arguments
