@@ -9,7 +9,13 @@ package Internalpages;
  *
  * @author SCC-COMLAB
  */
+import com.mysql.jdbc.Statement;
+import config.connection;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 public class Userpage extends javax.swing.JInternalFrame {
 
     /**
@@ -33,6 +39,8 @@ public class Userpage extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(790, 550));
 
@@ -41,9 +49,22 @@ public class Userpage extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("wa moy label");
+        jLabel1.setText("This is not user page");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(260, 150, 270, 200);
+        jLabel1.setBounds(20, 10, 400, 70);
+
+        jTable1.setBackground(new java.awt.Color(0, 102, 102));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][][] {
+            },
+            new String [] {
+                "Tenants ID", "Name", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(50, 100, 680, 402);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,5 +88,7 @@ public class Userpage extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
