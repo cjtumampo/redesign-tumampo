@@ -23,7 +23,7 @@ public class dashboard extends javax.swing.JFrame {
     public dashboard() {
         initComponents();
     }
-    Color navcolor = new Color(0,102,102);
+    Color navcolor = new Color(204,102,0);
     Color navbar = new Color (240,240,240);
     Color Hdcolor = new Color (0,102,102);
 
@@ -45,13 +45,14 @@ public class dashboard extends javax.swing.JFrame {
         settings = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         head = new javax.swing.JPanel();
-        maindesktop = new javax.swing.JDesktopPane();
         closes = new javax.swing.JLabel();
+        maindesktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        body.setBackground(new java.awt.Color(0, 153, 153));
+        body.setBackground(new java.awt.Color(204, 102, 0));
+        body.setAutoscrolls(true);
         body.setLayout(null);
 
         navigator.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,8 +122,19 @@ public class dashboard extends javax.swing.JFrame {
 
         head.setBackground(new java.awt.Color(0, 102, 102));
         head.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        closes.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        closes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        closes.setText("x");
+        closes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closesMouseClicked(evt);
+            }
+        });
+        head.add(closes, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 34, 30));
+
         body.add(head);
-        head.setBounds(160, 30, 790, 40);
+        head.setBounds(0, 20, 950, 50);
 
         maindesktop.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -139,17 +151,6 @@ public class dashboard extends javax.swing.JFrame {
 
         body.add(maindesktop);
         maindesktop.setBounds(160, 70, 800, 550);
-
-        closes.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        closes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        closes.setText("x");
-        closes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closesMouseClicked(evt);
-            }
-        });
-        body.add(closes);
-        closes.setBounds(910, 0, 34, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
