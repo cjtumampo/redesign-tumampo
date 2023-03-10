@@ -1,27 +1,30 @@
-
-import java.awt.BasicStroke;
-import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Internalpages;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
+import tumampo.re.design.dashboard;
 
 /**
  *
  * @author SCC-COMLAB
  */
-public class login extends javax.swing.JFrame {
+public class LoginForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form login
+     * Creates new form LoginForm
      */
-    public login() {
-        this.empty = BorderFactory.createEmptyBorder();
+    public LoginForm() {
+
         initComponents();
     }
     Color navcolor = new Color(0,102,102);
@@ -29,12 +32,13 @@ public class login extends javax.swing.JFrame {
     Color Hdcolor = new Color (0,102,102);
     Color hover = new Color (204,102,0);
     
-    Border empty;
+    Border empty = BorderFactory.createEmptyBorder();
     
     void ButtonBorderAnimation(JPanel panel){
         panel.setBackground(hover);
-        panel.setBackground((Color) BorderFactory.createLineBorder(Color.BLACK));
-        panel.setBackground((Color) BorderFactory.createStrokeBorder(new BasicStroke(2.0f)));
+        panel.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(2.0f)));
+
     }
     
      void ButtonDefaultColor(JPanel panel)
@@ -96,8 +100,11 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(password);
         password.setBounds(540, 290, 250, 50);
 
-        login.setBackground(new java.awt.Color(204, 102, 0));
+        login.setBackground(new java.awt.Color(255, 255, 255));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 loginMouseEntered(evt);
             }
@@ -128,7 +135,7 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(login);
         login.setBounds(670, 350, 110, 40);
 
-        cancel.setBackground(new java.awt.Color(204, 102, 0));
+        cancel.setBackground(new java.awt.Color(255, 255, 255));
         cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 cancelMouseEntered(evt);
@@ -158,13 +165,13 @@ public class login extends javax.swing.JFrame {
 
         jLabel3.setText("New user? Click here to register");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(590, 400, 160, 20);
+        jLabel3.setBounds(580, 400, 260, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1021, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 986, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,6 +179,7 @@ public class login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
@@ -198,6 +206,15 @@ public class login extends javax.swing.JFrame {
         ButtonDefaultColor(cancel);
     }//GEN-LAST:event_cancelMouseExited
 
+    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
+        // TODO add your handling code here:
+       
+        
+        dashboard dash = new dashboard();
+        dash.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_loginMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -215,21 +232,21 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
-         }
+                new LoginForm().setVisible(true);
+            }
         });
     }
 

@@ -10,6 +10,9 @@ package Internalpages;
  * @author SCC-COMLAB
  */
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import Internalpages.LoginForm;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 public class settings extends javax.swing.JInternalFrame {
 
@@ -43,10 +46,10 @@ public class settings extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         archieve = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        logout = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         request = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        logout = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -106,36 +109,6 @@ public class settings extends javax.swing.JInternalFrame {
         jPanel2.add(archieve);
         archieve.setBounds(150, 60, 140, 140);
 
-        logout.setBackground(new java.awt.Color(0, 153, 153));
-        logout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                logoutMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                logoutMouseExited(evt);
-            }
-        });
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Internalpages/icons8-logout-rounded-100.png"))); // NOI18N
-
-        javax.swing.GroupLayout logoutLayout = new javax.swing.GroupLayout(logout);
-        logout.setLayout(logoutLayout);
-        logoutLayout.setHorizontalGroup(
-            logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-        );
-        logoutLayout.setVerticalGroup(
-            logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(logout);
-        logout.setBounds(470, 60, 140, 140);
-
         request.setBackground(new java.awt.Color(0, 153, 153));
         request.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -171,7 +144,42 @@ public class settings extends javax.swing.JInternalFrame {
         jPanel2.add(request);
         request.setBounds(310, 60, 140, 140);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 219, 800, 360));
+        logout.setBackground(new java.awt.Color(0, 153, 153));
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Internalpages/icons8-logout-rounded-100.png"))); // NOI18N
+        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout logoutLayout = new javax.swing.GroupLayout(logout);
+        logout.setLayout(logoutLayout);
+        logoutLayout.setHorizontalGroup(
+            logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        logoutLayout.setVerticalGroup(
+            logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(logout);
+        logout.setBounds(480, 60, 140, 140);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 219, 800, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,16 +214,19 @@ public class settings extends javax.swing.JInternalFrame {
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         // TODO add your handling code here:
+        JFrame mainFrame = (JFrame)SwingUtilities.getWindowAncestor(this);
+        mainFrame.dispose();
+        LoginForm If = new LoginForm();
+        If.setVisible(true);
     }//GEN-LAST:event_logoutMouseClicked
 
     private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
         // TODO add your handling code here:
-        logout.setBackground(navbar);
+        
     }//GEN-LAST:event_logoutMouseEntered
 
     private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
         // TODO add your handling code here:
-        logout.setBackground(buttons);
     }//GEN-LAST:event_logoutMouseExited
 
 
@@ -226,7 +237,7 @@ public class settings extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel logout;
