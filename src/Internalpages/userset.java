@@ -5,21 +5,21 @@
  */
 package Internalpages;
 
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author SCC-COMLAB
  */
-import java.awt.Color;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import Internalpages.LoginForm;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
-public class settings extends javax.swing.JInternalFrame {
+public class userset extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form settings
+     * Creates new form userset
      */
-    public settings() {
+    public userset() {
         initComponents();
     this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
     BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
@@ -50,10 +50,10 @@ public class settings extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         archieve = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        call = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         request = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        logout = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -83,28 +83,29 @@ public class settings extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 150, 130));
 
         jLabel1.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 24)); // NOI18N
-        jLabel1.setText("Reports ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 110, 40));
+        jLabel1.setText("ACCOUNT SETTINGS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 250, 40));
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        jLabel2.setText("Profit:");
+        jLabel2.setText("Name: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 70, 20));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        jLabel3.setText("Bill:");
+        jLabel3.setText("Position:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, 20));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        jLabel8.setText("total tenants:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, 20));
+        jLabel8.setText("Email:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 90, 20));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel9.setText("Address: ");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 90, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 220));
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel2.setLayout(null);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         archieve.setBackground(new java.awt.Color(0, 153, 153));
         archieve.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,43 +138,7 @@ public class settings extends javax.swing.JInternalFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(archieve);
-        archieve.setBounds(150, 60, 140, 140);
-
-        call.setBackground(new java.awt.Color(0, 153, 153));
-        call.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                callMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                callMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                callMouseExited(evt);
-            }
-        });
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Internalpages/icons8-call-male-100.png"))); // NOI18N
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout callLayout = new javax.swing.GroupLayout(call);
-        call.setLayout(callLayout);
-        callLayout.setHorizontalGroup(
-            callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(callLayout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        callLayout.setVerticalGroup(
-            callLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(callLayout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(call);
-        call.setBounds(310, 60, 140, 140);
+        jPanel2.add(archieve, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
         request.setBackground(new java.awt.Color(0, 153, 153));
         request.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -188,9 +153,9 @@ public class settings extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Internalpages/icons8-request-service-100 (1).png"))); // NOI18N
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Internalpages/icons8-request-service-100 (1).png"))); // NOI18N
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout requestLayout = new javax.swing.GroupLayout(request);
         request.setLayout(requestLayout);
@@ -198,36 +163,73 @@ public class settings extends javax.swing.JInternalFrame {
             requestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, requestLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         requestLayout.setVerticalGroup(
             requestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, requestLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(request);
-        request.setBounds(480, 60, 140, 140);
+        jPanel2.add(request, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 800, 320));
+        logout.setBackground(new java.awt.Color(0, 153, 153));
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Internalpages/icons8-logout-rounded-100.png"))); // NOI18N
+        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout logoutLayout = new javax.swing.GroupLayout(logout);
+        logout.setLayout(logoutLayout);
+        logoutLayout.setHorizontalGroup(
+            logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        logoutLayout.setVerticalGroup(
+            logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 219, 800, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void archieveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archieveMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_archieveMouseClicked
+
     private void archieveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archieveMouseEntered
         // TODO add your handling code here:
-                archieve.setBackground(navbar);
+        archieve.setBackground(navbar);
     }//GEN-LAST:event_archieveMouseEntered
 
     private void archieveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archieveMouseExited
         // TODO add your handling code here:
-                archieve.setBackground(buttons);
+        archieve.setBackground(buttons);
     }//GEN-LAST:event_archieveMouseExited
 
-    private void archieveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archieveMouseClicked
+    private void requestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_archieveMouseClicked
+    }//GEN-LAST:event_requestMouseClicked
 
     private void requestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestMouseEntered
         // TODO add your handling code here:
@@ -239,40 +241,39 @@ public class settings extends javax.swing.JInternalFrame {
         request.setBackground(buttons);
     }//GEN-LAST:event_requestMouseExited
 
-    private void requestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestMouseClicked
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_requestMouseClicked
+        JFrame mainFrame = (JFrame)SwingUtilities.getWindowAncestor(this);
+        mainFrame.dispose();
+        LoginForm If = new LoginForm();
+        If.setVisible(true);
+    }//GEN-LAST:event_logoutMouseClicked
 
-    private void callMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_callMouseClicked
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_callMouseClicked
 
-    private void callMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_callMouseEntered
-        // TODO add your handling code here:
-        call.setBackground(navbar);
-    }//GEN-LAST:event_callMouseEntered
+    }//GEN-LAST:event_logoutMouseEntered
 
-    private void callMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_callMouseExited
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
         // TODO add your handling code here:
-        call.setBackground(buttons);
-    }//GEN-LAST:event_callMouseExited
+    }//GEN-LAST:event_logoutMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel archieve;
-    private javax.swing.JPanel call;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel logout;
     private javax.swing.JPanel request;
     // End of variables declaration//GEN-END:variables
 }

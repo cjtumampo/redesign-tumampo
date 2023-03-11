@@ -41,6 +41,9 @@ public class Userpage extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(790, 550));
 
@@ -49,9 +52,9 @@ public class Userpage extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("This is not user page");
+        jLabel1.setText("Sample Userpage");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 10, 400, 70);
+        jLabel1.setBounds(10, 10, 360, 70);
 
         jTable1.setBackground(new java.awt.Color(0, 102, 102));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -64,7 +67,24 @@ public class Userpage extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(50, 100, 680, 402);
+        jScrollPane1.setBounds(50, 162, 680, 340);
+
+        jButton1.setText("DELETE");
+        jPanel1.add(jButton1);
+        jButton1.setBounds(280, 110, 70, 23);
+
+        jButton2.setText("EDIT");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(190, 110, 70, 23);
+
+        jButton3.setText("ADD");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3);
+        jButton3.setBounds(100, 110, 70, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,8 +104,18 @@ public class Userpage extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        signin I = new signin();
+        I.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

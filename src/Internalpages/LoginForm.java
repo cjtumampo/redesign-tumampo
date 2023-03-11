@@ -167,6 +167,11 @@ public class LoginForm extends javax.swing.JFrame {
         cancel.setBounds(550, 350, 110, 40);
 
         jLabel3.setText("New user? Click here to register");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel3);
         jLabel3.setBounds(580, 400, 260, 20);
 
@@ -247,6 +252,13 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_closeMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        signin I = new signin();
+        I.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

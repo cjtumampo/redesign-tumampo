@@ -8,6 +8,7 @@ package tumampo.re.design;
 import Internalpages.DashBoardPage;
 import Internalpages.Userpage;
 import Internalpages.settings;
+import Internalpages.userset;
 import java.awt.Color;
 import internalpages.*;
 import javax.swing.JOptionPane;
@@ -37,16 +38,20 @@ public class dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         body = new javax.swing.JPanel();
+        head = new javax.swing.JPanel();
+        closes = new javax.swing.JLabel();
+        maindesktop = new javax.swing.JDesktopPane();
         navigator = new javax.swing.JPanel();
         dashpane = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         userpane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        accounts = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         settings = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        head = new javax.swing.JPanel();
-        closes = new javax.swing.JLabel();
-        maindesktop = new javax.swing.JDesktopPane();
+        close = new javax.swing.JLabel();
+        min = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -54,6 +59,38 @@ public class dashboard extends javax.swing.JFrame {
         body.setBackground(new java.awt.Color(204, 102, 0));
         body.setAutoscrolls(true);
         body.setLayout(null);
+
+        head.setBackground(new java.awt.Color(0, 102, 102));
+        head.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        closes.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        closes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        closes.setText("x");
+        closes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closesMouseClicked(evt);
+            }
+        });
+        head.add(closes, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 34, 30));
+
+        body.add(head);
+        head.setBounds(160, 30, 790, 40);
+
+        maindesktop.setBackground(new java.awt.Color(0, 51, 51));
+
+        javax.swing.GroupLayout maindesktopLayout = new javax.swing.GroupLayout(maindesktop);
+        maindesktop.setLayout(maindesktopLayout);
+        maindesktopLayout.setHorizontalGroup(
+            maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        maindesktopLayout.setVerticalGroup(
+            maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+
+        body.add(maindesktop);
+        maindesktop.setBounds(160, 70, 800, 550);
 
         navigator.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,6 +134,26 @@ public class dashboard extends javax.swing.JFrame {
 
         navigator.add(userpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 60));
 
+        accounts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                accountsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                accountsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                accountsMouseExited(evt);
+            }
+        });
+        accounts.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Nirmala UI", 1, 15)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("ACCOUNTS");
+        accounts.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 40));
+
+        navigator.add(accounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 160, 60));
+
         settings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 settingsMouseClicked(evt);
@@ -118,39 +175,30 @@ public class dashboard extends javax.swing.JFrame {
         navigator.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 160, 60));
 
         body.add(navigator);
-        navigator.setBounds(0, 70, 160, 550);
+        navigator.setBounds(0, 20, 160, 650);
 
-        head.setBackground(new java.awt.Color(0, 102, 102));
-        head.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        closes.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        closes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        closes.setText("x");
-        closes.addMouseListener(new java.awt.event.MouseAdapter() {
+        close.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        close.setText("x");
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closesMouseClicked(evt);
+                closeMouseClicked(evt);
             }
         });
-        head.add(closes, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 34, 30));
+        body.add(close);
+        close.setBounds(920, 0, 20, 30);
 
-        body.add(head);
-        head.setBounds(0, 20, 950, 50);
-
-        maindesktop.setBackground(new java.awt.Color(0, 51, 51));
-
-        javax.swing.GroupLayout maindesktopLayout = new javax.swing.GroupLayout(maindesktop);
-        maindesktop.setLayout(maindesktopLayout);
-        maindesktopLayout.setHorizontalGroup(
-            maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        maindesktopLayout.setVerticalGroup(
-            maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
-
-        body.add(maindesktop);
-        maindesktop.setBounds(160, 70, 800, 550);
+        min.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        min.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        min.setText("_");
+        min.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        min.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minMouseClicked(evt);
+            }
+        });
+        body.add(min);
+        min.setBounds(890, 0, 20, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,6 +270,32 @@ public class dashboard extends javax.swing.JFrame {
         maindesktop.add(udp).setVisible(true);
     }//GEN-LAST:event_settingsMouseClicked
 
+    private void accountsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountsMouseClicked
+        // TODO add your handling code here:
+        userset us = new userset();
+        maindesktop.add(us).setVisible(true);
+    }//GEN-LAST:event_accountsMouseClicked
+
+    private void accountsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountsMouseEntered
+        // TODO add your handling code here:
+        accounts.setBackground(navcolor);
+    }//GEN-LAST:event_accountsMouseEntered
+
+    private void accountsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountsMouseExited
+        // TODO add your handling code here:
+        accounts.setBackground(navbar);
+    }//GEN-LAST:event_accountsMouseExited
+
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_closeMouseClicked
+
+    private void minMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minMouseClicked
+        // TODO add your handling code here:
+        setState(ICONIFIED);
+    }//GEN-LAST:event_minMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -258,14 +332,18 @@ public class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel accounts;
     private javax.swing.JPanel body;
+    private javax.swing.JLabel close;
     private javax.swing.JLabel closes;
     private javax.swing.JPanel dashpane;
     private javax.swing.JPanel head;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JDesktopPane maindesktop;
+    private javax.swing.JLabel min;
     private javax.swing.JPanel navigator;
     private javax.swing.JPanel settings;
     private javax.swing.JPanel userpane;
