@@ -254,7 +254,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here:     
         signin I = new signin();
         I.setVisible(true);
         this.dispose();

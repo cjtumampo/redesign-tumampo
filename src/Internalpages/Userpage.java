@@ -14,6 +14,8 @@ import config.connection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 public class Userpage extends javax.swing.JInternalFrame {
@@ -106,9 +108,10 @@ public class Userpage extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        JFrame mainFrame = (JFrame)SwingUtilities.getWindowAncestor(this);
+        mainFrame.dispose();
         signin I = new signin();
         I.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
