@@ -11,6 +11,7 @@ package Internalpages;
  */
 import com.mysql.jdbc.Statement;
 import config.connection;
+import config.dpconnector;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 public class Userpage extends javax.swing.JInternalFrame {
 
     /**
@@ -28,6 +30,16 @@ public class Userpage extends javax.swing.JInternalFrame {
     this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
     BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
     bi.setNorthPane(null);
+    }
+    public void displaydata()
+    {
+        try{
+    dpconnector dbc = new dpconnector();
+    ResultSet rs = dbc.getData("SELECT * FROM tbl_customer");
+    Customer_table.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(SQLException ex){
+        System.out.println("Error Message");
+        }
     }
 
     /**
@@ -42,42 +54,49 @@ public class Userpage extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Customer_table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        C_contact = new javax.swing.JTextField();
+        C_gender = new javax.swing.JTextField();
+        C_status = new javax.swing.JTextField();
+        C_address = new javax.swing.JTextField();
+        C_email = new javax.swing.JTextField();
+        C_name = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        C_age = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(790, 550));
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(189, 155, 106));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sample Userpage");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 10, 360, 70);
+        jLabel1.setBounds(0, 0, 360, 70);
 
-        jTable1.setBackground(new java.awt.Color(0, 102, 102));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][][] {
-            },
-            new String [] {
-                "Tenants ID", "Name", "Status"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        Customer_table.setBackground(new java.awt.Color(0, 102, 102));
+        jScrollPane1.setViewportView(Customer_table);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(50, 162, 680, 340);
+        jScrollPane1.setBounds(280, 90, 500, 450);
 
         jButton1.setText("DELETE");
         jPanel1.add(jButton1);
-        jButton1.setBounds(280, 110, 70, 23);
+        jButton1.setBounds(190, 90, 70, 23);
 
-        jButton2.setText("EDIT");
+        jButton2.setText("DISPLAY");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2);
-        jButton2.setBounds(190, 110, 70, 23);
+        jButton2.setBounds(100, 90, 80, 23);
 
         jButton3.setText("ADD");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +105,73 @@ public class Userpage extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(100, 110, 70, 23);
+        jButton3.setBounds(20, 90, 70, 23);
+
+        C_contact.setBackground(new java.awt.Color(189, 155, 106));
+        C_contact.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Contact"));
+        C_contact.setOpaque(false);
+        C_contact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C_contactActionPerformed(evt);
+            }
+        });
+        jPanel1.add(C_contact);
+        C_contact.setBounds(20, 410, 250, 40);
+
+        C_gender.setBackground(new java.awt.Color(189, 155, 106));
+        C_gender.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Gender"));
+        C_gender.setOpaque(false);
+        jPanel1.add(C_gender);
+        C_gender.setBounds(20, 360, 250, 40);
+
+        C_status.setBackground(new java.awt.Color(189, 155, 106));
+        C_status.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "status"));
+        C_status.setOpaque(false);
+        C_status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C_statusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(C_status);
+        C_status.setBounds(20, 300, 250, 40);
+
+        C_address.setBackground(new java.awt.Color(189, 155, 106));
+        C_address.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Address"));
+        C_address.setOpaque(false);
+        jPanel1.add(C_address);
+        C_address.setBounds(20, 250, 250, 40);
+
+        C_email.setBackground(new java.awt.Color(189, 155, 106));
+        C_email.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "email"));
+        C_email.setOpaque(false);
+        jPanel1.add(C_email);
+        C_email.setBounds(20, 190, 250, 40);
+
+        C_name.setBackground(new java.awt.Color(189, 155, 106));
+        C_name.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Name"));
+        C_name.setOpaque(false);
+        jPanel1.add(C_name);
+        C_name.setBounds(20, 130, 250, 40);
+
+        jButton4.setText("save");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+        jButton4.setBounds(100, 510, 90, 40);
+
+        C_age.setBackground(new java.awt.Color(189, 155, 106));
+        C_age.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "age"));
+        C_age.setOpaque(false);
+        C_age.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C_ageActionPerformed(evt);
+            }
+        });
+        jPanel1.add(C_age);
+        C_age.setBounds(20, 460, 250, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,14 +199,51 @@ public class Userpage extends javax.swing.JInternalFrame {
         I.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        displaydata();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void C_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_contactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C_contactActionPerformed
+
+    private void C_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_statusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C_statusActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        dpconnector dbc = new dpconnector();
+
+        dbc.insertData("INSERT INTO tbl_customer (t_name, t_address, t_status, t_gender, t_age,t_contact) "
+
+                + "VALUES ('"+C_name.getText()+"', '"+C_address.getText()+"','"+C_status.getText()+"','"+C_gender.getText()+"','"+C_age.getText()+"','"+C_contact.getText()+"')");
+
+        displaydata();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void C_ageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_ageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C_ageActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField C_address;
+    private javax.swing.JTextField C_age;
+    private javax.swing.JTextField C_contact;
+    private javax.swing.JTextField C_email;
+    private javax.swing.JTextField C_gender;
+    private javax.swing.JTextField C_name;
+    private javax.swing.JTextField C_status;
+    private javax.swing.JTable Customer_table;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
