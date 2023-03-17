@@ -73,7 +73,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Internalpages/icons8-customer-100.png"/>
+                  <Image iconType="3" name="/Image/icons8-customer-100.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -202,7 +202,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Internalpages/icons8-archive-folder-100.png"/>
+                  <Image iconType="3" name="/Image/icons8-archive-folder-100.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -248,7 +248,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Internalpages/icons8-request-service-100 (1).png"/>
+                  <Image iconType="3" name="/Image/icons8-request-service-100 (1).png"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
@@ -295,7 +295,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Internalpages/icons8-logout-rounded-100.png"/>
+                  <Image iconType="3" name="/Image/icons8-logout-rounded-100.png"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>

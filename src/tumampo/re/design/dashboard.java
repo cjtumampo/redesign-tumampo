@@ -6,12 +6,15 @@
 package tumampo.re.design;
 
 import Internalpages.DashBoardPage;
+import Internalpages.LoginForm;
 import Internalpages.Userpage;
 import Internalpages.settings;
 import Internalpages.userset;
 import java.awt.Color;
 import internalpages.*;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author SCC-COMLAB
@@ -25,7 +28,7 @@ public class dashboard extends javax.swing.JFrame {
         initComponents();
     }
     Color navcolor = new Color(204,102,0);
-    Color navbar = new Color (61, 61, 61);
+    Color navbar = new Color (188,71,58);
     Color Hdcolor = new Color (0,102,102);
 
     /**
@@ -52,16 +55,17 @@ public class dashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         dashpane = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        logout = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         body.setBackground(new java.awt.Color(204, 102, 0));
-        body.setAutoscrolls(true);
         body.setLayout(null);
 
-        head.setBackground(new java.awt.Color(0, 102, 102));
+        head.setBackground(new java.awt.Color(224, 152, 67));
         head.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         close.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -108,10 +112,10 @@ public class dashboard extends javax.swing.JFrame {
         body.add(maindesktop);
         maindesktop.setBounds(160, 70, 790, 550);
 
-        navigator.setBackground(new java.awt.Color(61, 61, 61));
+        navigator.setBackground(new java.awt.Color(188, 71, 58));
         navigator.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userpane.setBackground(new java.awt.Color(61, 61, 61));
+        userpane.setBackground(new java.awt.Color(188, 71, 58));
         userpane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 userpaneMouseClicked(evt);
@@ -133,7 +137,7 @@ public class dashboard extends javax.swing.JFrame {
 
         navigator.add(userpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 60));
 
-        accounts.setBackground(new java.awt.Color(61, 61, 61));
+        accounts.setBackground(new java.awt.Color(188, 71, 58));
         accounts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 accountsMouseClicked(evt);
@@ -153,9 +157,9 @@ public class dashboard extends javax.swing.JFrame {
         jLabel5.setText("ACCOUNTS");
         accounts.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 90, 40));
 
-        navigator.add(accounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 160, 60));
+        navigator.add(accounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 160, 60));
 
-        settings.setBackground(new java.awt.Color(61, 61, 61));
+        settings.setBackground(new java.awt.Color(188, 71, 58));
         settings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 settingsMouseClicked(evt);
@@ -177,7 +181,7 @@ public class dashboard extends javax.swing.JFrame {
 
         navigator.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 160, 60));
 
-        dashpane.setBackground(new java.awt.Color(61, 61, 61));
+        dashpane.setBackground(new java.awt.Color(188, 71, 58));
         dashpane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dashpaneMouseClicked(evt);
@@ -198,6 +202,28 @@ public class dashboard extends javax.swing.JFrame {
         dashpane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 90, 40));
 
         navigator.add(dashpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 60));
+
+        logout.setBackground(new java.awt.Color(188, 71, 58));
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+        logout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("LOGOUT");
+        logout.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 90, 40));
+
+        navigator.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 160, 60));
 
         body.add(navigator);
         navigator.setBounds(0, 70, 160, 550);
@@ -309,6 +335,23 @@ public class dashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        // TODO add your handling code here:
+        JFrame mainFrame = (JFrame)SwingUtilities.getWindowAncestor(this);
+        mainFrame.dispose();       
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        // TODO add your handling code here:
+        logout.setBackground(navcolor);
+        
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        // TODO add your handling code here:
+        logout.setBackground(navbar);
+    }//GEN-LAST:event_logoutMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -356,6 +399,8 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel logout;
     private javax.swing.JDesktopPane maindesktop;
     private javax.swing.JLabel min;
     private javax.swing.JPanel navigator;
