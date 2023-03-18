@@ -63,7 +63,7 @@ public class DashBoardPage extends javax.swing.JInternalFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rsz_1995e3779e1d2e419a823518c3bdb1298.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(540, 150, 240, 350);
+        jLabel2.setBounds(530, 150, 240, 350);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rsz_3rsz_1rsz_1rsz_1se-urban-small-lot-05-1170x1813.jpg"))); // NOI18N
         jPanel1.add(jLabel4);

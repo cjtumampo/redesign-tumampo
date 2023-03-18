@@ -337,8 +337,8 @@ public class dashboard extends javax.swing.JFrame {
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         // TODO add your handling code here:
-        JFrame mainFrame = (JFrame)SwingUtilities.getWindowAncestor(this);
-        mainFrame.dispose();       
+      
+      this.dispose();
     }//GEN-LAST:event_logoutMouseClicked
 
     private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered

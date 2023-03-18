@@ -46,6 +46,48 @@ public class dpconnector {
                 System.out.println("Connection Error: "+e);
             }
     }
+    public void deleteData(int id) {
+    try {
+       
+        PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM tbl_customer WHERE t_id = ?");
+        stmt.setInt(1, id);
+       
+        int rowsDeleted = stmt.executeUpdate();
+
+        if (rowsDeleted > 0) {
+            System.out.println(rowsDeleted + " rows were deleted.");
+        } else {
+            System.out.println("No rows were deleted.");
+        }
+       
+       
+        stmt.close();
+        connection.close();
+       
+    } catch (SQLException e) {
+        System.out.println("Error deleting data: " + e.getMessage());
+    }
+}
+    public int updateData(String sql){
+        int num = 0;
+        try {
+       
+            String query = sql;
+            PreparedStatement pstmt = (PreparedStatement) connection.prepareStatement(query);
+            int rowsUpdated = pstmt.executeUpdate();
+            if(rowsUpdated > 0) {
+                System.out.println("Data updated successfully!");
+                num = 1;
+            } else {
+                System.out.println("Data update failed!");
+                num = 0;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       
+        return num;
+    }
 
 }
     
