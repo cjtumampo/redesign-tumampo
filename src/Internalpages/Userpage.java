@@ -17,11 +17,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
+import tumampo.re.design.dashboard;
 public class Userpage extends javax.swing.JInternalFrame {
 
     /**
@@ -35,17 +38,8 @@ public class Userpage extends javax.swing.JInternalFrame {
     bi.setNorthPane(null);
     }
     
-    public void reset()
-    {
-    C_name.setText("");
-    C_email.setText("");
-    C_address.setText("");
-    C_contact.setText("");
-    C_gender.setText("");
-    C_status.setText("");
-    C_age.setText("");
     
-    }
+
     public void displaydata()
     {
         try{
@@ -67,79 +61,25 @@ public class Userpage extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        C_gender = new javax.swing.JTextField();
-        C_status = new javax.swing.JTextField();
-        C_address = new javax.swing.JTextField();
-        C_email = new javax.swing.JTextField();
-        C_name = new javax.swing.JTextField();
-        C_contact = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Customer_table = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Search = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        C_age = new javax.swing.JTextField();
-        C_id = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(790, 550));
 
         jPanel1.setBackground(new java.awt.Color(204, 102, 0));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("TENANTS MANAGER");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, -10, 400, 70);
-
-        C_gender.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Gender", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11))); // NOI18N
-        C_gender.setOpaque(false);
-        jPanel1.add(C_gender);
-        C_gender.setBounds(380, 120, 250, 40);
-
-        C_status.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11))); // NOI18N
-        C_status.setOpaque(false);
-        C_status.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                C_statusActionPerformed(evt);
-            }
-        });
-        jPanel1.add(C_status);
-        C_status.setBounds(380, 170, 250, 40);
-
-        C_address.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Address", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11))); // NOI18N
-        C_address.setOpaque(false);
-        jPanel1.add(C_address);
-        C_address.setBounds(50, 170, 290, 40);
-
-        C_email.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11))); // NOI18N
-        C_email.setOpaque(false);
-        jPanel1.add(C_email);
-        C_email.setBounds(50, 120, 290, 40);
-
-        C_name.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11))); // NOI18N
-        C_name.setOpaque(false);
-        C_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                C_nameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(C_name);
-        C_name.setBounds(50, 70, 290, 40);
-
-        C_contact.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Contact", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11))); // NOI18N
-        C_contact.setOpaque(false);
-        C_contact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                C_contactActionPerformed(evt);
-            }
-        });
-        jPanel1.add(C_contact);
-        C_contact.setBounds(380, 70, 250, 40);
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Customer_table.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         Customer_table.setOpaque(false);
@@ -150,24 +90,66 @@ public class Userpage extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(Customer_table);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(50, 230, 690, 260);
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 700, 280));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(20, 160, 750, 340);
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setText("SAVE");
-        jButton4.setAutoscrolls(true);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jPanel3.setBackground(new java.awt.Color(178, 63, 48));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("TENANTS MANAGER");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 320, 70));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Search Bar");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 90, -1));
+
+        Search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                SearchActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 90, 30));
+        Search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                SearchKeyReleased(evt);
+            }
+        });
+        jPanel3.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 350, 30));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(0, 0, 790, 90);
+
+        jButton2.setBackground(new java.awt.Color(161, 197, 53));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setText("UPDATE");
+        jButton2.setOpaque(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(20, 110, 80, 30);
+
+        jButton5.setBackground(new java.awt.Color(161, 197, 53));
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton5.setText("ADD");
+        jButton5.setOpaque(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5);
+        jButton5.setBounds(120, 110, 80, 30);
+
+        jButton1.setBackground(new java.awt.Color(236, 24, 1));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("DELETE");
         jButton1.setOpaque(false);
@@ -176,47 +158,21 @@ public class Userpage extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 90, 30));
+        jPanel1.add(jButton1);
+        jButton1.setBounds(670, 110, 80, 30);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setText("RESET");
-        jButton3.setOpaque(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(161, 197, 53));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton4.setText("BOOK");
+        jButton4.setActionCommand("Dislay");
+        jButton4.setOpaque(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 90, 30));
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setText("UPDATE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 80, 30));
-
-        C_age.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Age", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11))); // NOI18N
-        C_age.setOpaque(false);
-        C_age.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                C_ageActionPerformed(evt);
-            }
-        });
-        jPanel2.add(C_age, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 90, 40));
-
-        C_id.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 11))); // NOI18N
-        C_id.setOpaque(false);
-        C_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                C_idActionPerformed(evt);
-            }
-        });
-        jPanel2.add(C_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 90, 40));
-
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(40, 50, 710, 490);
+        jPanel1.add(jButton4);
+        jButton4.setBounds(230, 110, 80, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,124 +184,116 @@ public class Userpage extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void C_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_contactActionPerformed
+    private void Customer_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Customer_tableMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_C_contactActionPerformed
+    }//GEN-LAST:event_Customer_tableMouseClicked
 
-    private void C_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_statusActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_C_statusActionPerformed
+        JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        mainFrame.dispose();
+        signin sf = new signin();
+        sf.setVisible(true);
+        sf.action = "Add";
+        sf.jButton2.setText("Add");
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        dpconnector dbc = new dpconnector();
+        int RowIndex  = Customer_table.getSelectedRow();
+        if(RowIndex < 0){
+            JOptionPane.showMessageDialog(null,"Successfully Updated.","Alert",JOptionPane.WARNING_MESSAGE);
+        }else{
+            TableModel model = Customer_table.getModel();
+            signin sf = new signin();
+            sf.c_id.setText(""+model.getValueAt(RowIndex, 0));
+            sf.C_name.setText(""+model.getValueAt(RowIndex, 1));
+            sf.l_name.setText(""+model.getValueAt(RowIndex, 2));
+            sf.gender = model.getValueAt(RowIndex, 4).toString();
 
-        dbc.insertData("INSERT INTO tbl_customer (t_name, t_address, t_status, t_gender, t_age,t_contact) "
-
-                + "VALUES ('"+C_name.getText()+"', '"+C_address.getText()+"','"+C_status.getText()+"','"+C_gender.getText()+"','"+C_age.getText()+"','"+C_contact.getText()+"')");
-
-        displaydata();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void C_ageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_ageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_C_ageActionPerformed
+            String gend = model.getValueAt(RowIndex, 4).toString();
+            if(gend.equals("Male")){
+                sf.male.setSelected(true);
+            }
+            if(gend.equals("Female")){
+                sf.female.setSelected(true);
+            }
+            sf.combobox.setSelectedItem(model.getValueAt(RowIndex, 5).toString());
+            sf.C_address.setText(model.getValueAt(RowIndex, 3).toString());
+            sf.C_contact.setText(model.getValueAt(RowIndex, 6).toString());
+            sf.Email.setText(model.getValueAt(RowIndex, 7).toString());
+            sf.action = "Edit";
+            sf.jButton2.setText("Update");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int rowIndex = Customer_table.getSelectedRow();
-       
-       
-       if(rowIndex < 0){
-           JOptionPane.showMessageDialog(null, "Please select a data first");
-       }else{
+
+        if(rowIndex < 0){
+            JOptionPane.showMessageDialog(null, "Please select a data first");
+        }else{
             TableModel model = Customer_table.getModel();
             Object value = model.getValueAt(rowIndex, 0);
             String id = value.toString();
-             int a=JOptionPane.showConfirmDialog(null,"Are you sure?");  
-                    if(a==JOptionPane.YES_OPTION){  
-                            dpconnector dbc = new dpconnector();
-                            dbc.deleteData(Integer.parseInt(id));
-                            displaydata();
-                     
-                    }    
-       
-       }
+            int a=JOptionPane.showConfirmDialog(null,"Are you sure?");
+            if(a==JOptionPane.YES_OPTION){
+                dpconnector dbc = new dpconnector();
+                dbc.deleteData(Integer.parseInt(id), ""
+                    + "tbl_customer", "t_id");
+                displaydata();
+
+            }
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void C_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_nameActionPerformed
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_C_nameActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        reset();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void Customer_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Customer_tableMouseClicked
-        // TODO add your handling code here:
-        int rowindex = Customer_table.getSelectedRow();
-        if(rowindex < 0)
-        {}else{
-        TableModel model = Customer_table.getModel();
-        C_id.setText(""+model.getValueAt(rowindex, 0));
-        C_name.setText(""+model.getValueAt(rowindex, 1));
-        C_address.setText(""+model.getValueAt(rowindex, 2));
-        C_contact.setText(""+model.getValueAt(rowindex, 6));
-        C_gender.setText(""+model.getValueAt(rowindex, 3));
-        C_status.setText(""+model.getValueAt(rowindex, 5));
-        C_age.setText(""+model.getValueAt(rowindex, 4));
         
-        }
-    }//GEN-LAST:event_Customer_tableMouseClicked
+    }//GEN-LAST:event_SearchActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void SearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchKeyReleased
         // TODO add your handling code here:
-         dpconnector dbc = new dpconnector();
-        int num = dbc.updateData("UPDATE tbl_customer "
-                + "SET t_name = '"+C_name.getText()+"', t_address='"+C_address.getText()+"', "
-                        + "t_status ='"+C_status.getText()+"', t_gender='"+C_gender.getText()+"' , t_age='"+C_age.getText()+"'"
-                                + "WHERE t_id = '"+C_id.getText()+"'");
-       
-        if(num == 0){
-           
-        }else{
-           JOptionPane.showMessageDialog(null, "Updated Successfully!");
-           displaydata();
-           reset();
+        DefaultTableModel model = (DefaultTableModel) Customer_table.getModel();
+        TableRowSorter<DefaultTableModel> tbl = new TableRowSorter<>(model);
+        Customer_table.setRowSorter(tbl);
+        
+        String searchText = Search.getText().trim();
+        tbl.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
+        
+        int selectedRow = Customer_table.getSelectedRow();
+        if(selectedRow != -1 ){
+        int modelRow = Customer_table.convertColumnIndexToModel(selectedRow);
+        model.setValueAt("New Value", modelRow, 1);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_SearchKeyReleased
 
-    private void C_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_idActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_C_idActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField C_address;
-    private javax.swing.JTextField C_age;
-    private javax.swing.JTextField C_contact;
-    private javax.swing.JTextField C_email;
-    private javax.swing.JTextField C_gender;
-    private javax.swing.JTextField C_id;
-    private javax.swing.JTextField C_name;
-    private javax.swing.JTextField C_status;
-    private javax.swing.JTable Customer_table;
+    public javax.swing.JTable Customer_table;
+    private javax.swing.JTextField Search;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

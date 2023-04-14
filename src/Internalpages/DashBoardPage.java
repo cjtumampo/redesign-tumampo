@@ -9,8 +9,12 @@ package Internalpages;
  *
  * @author SCC-COMLAB
  */
+import config.dpconnector;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import net.proteanit.sql.DbUtils;
 public class DashBoardPage extends javax.swing.JInternalFrame {
 
     /**
@@ -18,9 +22,20 @@ public class DashBoardPage extends javax.swing.JInternalFrame {
      */
     public DashBoardPage() {
         initComponents();
+        displayproperty();
             this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
     BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
     bi.setNorthPane(null);
+    }
+            public void displayproperty()
+    {
+        try{
+    dpconnector dbc = new dpconnector();
+    ResultSet rs = dbc.getData("SELECT * FROM tbl_rooms");
+    jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(SQLException ex){
+        System.out.println("Error Message");
+        }
     }
     Color navcolor = new Color(0,102,102);
     Color navbar = new Color (240,240,240);
@@ -37,81 +52,111 @@ public class DashBoardPage extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(790, 550));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(224, 152, 67));
-        jPanel1.setLayout(null);
+        jPanel2.setBackground(new java.awt.Color(224, 152, 67));
+        jPanel2.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(204, 102, 0));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.setBackground(new java.awt.Color(178, 63, 48));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Welcome User!");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 197, 51));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Price");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 110, 20));
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(10, 0, 760, 120);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "For Student", "Single Family Home", "Duplex", "Apartment", " " }));
+        jComboBox1.setBorder(null);
+        jComboBox1.setOpaque(false);
+        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 110, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rsz_1995e3779e1d2e419a823518c3bdb1298.jpg"))); // NOI18N
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(530, 150, 240, 350);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rsz_3rsz_1rsz_1rsz_1se-urban-small-lot-05-1170x1813.jpg"))); // NOI18N
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 150, 240, 350);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rsz_1rsz_3bellwoods-lodge-great-lakes-studio-15.jpg"))); // NOI18N
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(280, 150, 230, 350);
-
-        jButton1.setText("INFO");
-        jButton1.setOpaque(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Abra", "Agusan del Norte", "Agusan del Sur", "Aklan", "Albay", "Antique", "Apayao", "Aurora", "Basilan", "Bataan", "Batanes", "Batangas", "Benguet", "Biliran", "Bohol", "Bukidnon", "Bulacan", "Cagayan", "Camarines Norte", "Camarines Sur", "Camiguin", "Capiz", "Catanduanes", "Cavite", "Cebu", "Compostela Valley", "Cotabato (North Cotabato)", "Davao del Norte", "Davao del Sur", "Davao Occidental", "Davao Oriental", "Dinagat Islands", "Eastern Samar", "Guimaras", "Ifugao", "Ilocos Norte", "Ilocos Sur", "Iloilo", "Isabela", "Kalinga", "La Union", "Laguna", "Lanao del Norte", "Lanao del Sur", "Leyte", "Maguindanao", "Marinduque", "Masbate", "Misamis Occidental", "Misamis Oriental", "Mountain Province", "Negros Occidental", "Negros Oriental", "Northern Samar", "Nueva Ecija", "Nueva Vizcaya", "Occidental Mindoro", "Oriental Mindoro", "Palawan", "Pampanga", "Pangasinan", "Quezon", "Quirino", "Rizal", "Romblon", "Samar", "Sarangani", "Siquijor", "Sorsogon", "South Cotabato", "Southern Leyte", "Sultan Kudarat", "Sulu", "Surigao del Norte", "Surigao del Sur", "Tarlac", "Tawi-Tawi", "Zambales", "Zamboanga del Norte", "Zamboanga del Sur", "Zamboanga Sibugay" }));
+        jComboBox2.setBorder(null);
+        jComboBox2.setOpaque(false);
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jComboBox2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(360, 510, 57, 23);
+        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 150, 30));
 
-        jButton2.setText("INFO");
-        jButton2.setOpaque(false);
-        jPanel1.add(jButton2);
-        jButton2.setBounds(640, 510, 57, 23);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("House Type");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 110, 20));
 
-        jButton3.setText("INFO");
-        jButton3.setOpaque(false);
-        jPanel1.add(jButton3);
-        jButton3.setBounds(90, 510, 57, 23);
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Below $ 1500", "$ 2000", "$ 2500", "$ 3000", "$ 3500", "$ 4000", "$ 4500", "$ 5000", "$ 10,00" }));
+        jComboBox3.setBorder(null);
+        jComboBox3.setOpaque(false);
+        jPanel4.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 110, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 550));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Province");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 110, 20));
+
+        jButton1.setText("Filter");
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 80, 30));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 260, 70));
+
+        jPanel2.add(jPanel4);
+        jPanel4.setBounds(0, 0, 800, 100);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(30, 130, 740, 370);
+
+        jButton2.setText("Info");
+        jPanel2.add(jButton2);
+        jButton2.setBounds(310, 510, 150, 30);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

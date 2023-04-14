@@ -5,7 +5,12 @@
  */
 package Internalpages;
 import Internalpages.LoginForm;
-
+import tumampo.re.design.dashboard;
+import Internalpages.Userpage;
+import config.dpconnector;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author SCC-COMLAB
@@ -18,6 +23,9 @@ public class signin extends javax.swing.JFrame {
     public signin() {
         initComponents();
     }
+    String gender;
+    String Stat;
+    String action;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,25 +41,23 @@ public class signin extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        C_name = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        l_name = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        C_address = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        Email = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        C_contact = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        male = new javax.swing.JRadioButton();
+        female = new javax.swing.JRadioButton();
+        combobox = new javax.swing.JComboBox<>();
+        c_id = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -84,23 +90,23 @@ public class signin extends javax.swing.JFrame {
         jLabel1.setText("TENANT REGESTRATION FORM ");
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 50));
 
-        jTextField9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 170, 30));
+        C_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(C_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 170, 30));
 
         jLabel2.setText("Surname");
         jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
 
-        jTextField10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        l_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                l_nameActionPerformed(evt);
             }
         });
-        jPanel6.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 170, 30));
+        jPanel6.add(l_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 170, 30));
         jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, 20));
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 170, 30));
+        C_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(C_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 170, 30));
 
         jLabel4.setText("First name");
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
@@ -108,36 +114,29 @@ public class signin extends javax.swing.JFrame {
         jLabel5.setText("Address");
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 50, 20));
 
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 170, 30));
+        Email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 170, 30));
 
         jLabel6.setText("Email ");
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        C_contact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        C_contact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                C_contactActionPerformed(evt);
             }
         });
-        jPanel6.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 170, 30));
-
-        jLabel7.setText("Confirm Password");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, 20));
+        jPanel6.add(C_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 170, 30));
 
         jLabel8.setText("Mobile Number");
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 216, -1, -1));
 
-        jLabel9.setText("Create Password");
-        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 20));
-
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 170, 30));
-
-        jPasswordField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 170, 30));
-
-        jButton2.setText("Register");
+        jButton2.setText("save");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 80, 40));
 
         jButton1.setText("Cancel");
@@ -148,16 +147,30 @@ public class signin extends javax.swing.JFrame {
         });
         jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 80, 40));
 
-        jRadioButton1.setText(" Male ");
-        jPanel6.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 60, 30));
-
-        jRadioButton2.setText("Female");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        male.setText(" Male ");
+        male.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                maleActionPerformed(evt);
             }
         });
-        jPanel6.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 90, 30));
+        jPanel6.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 60, 30));
+
+        female.setText("Female");
+        female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleActionPerformed(evt);
+            }
+        });
+        jPanel6.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 80, 30));
+
+        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Married", "Divorced", "Widow" }));
+        combobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxActionPerformed(evt);
+            }
+        });
+        jPanel6.add(combobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 160, 30));
+        jPanel6.add(c_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 80, 30));
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 470, 530));
 
@@ -206,23 +219,79 @@ public class signin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        LoginForm n = new LoginForm();
-        n.setVisible(true);
         this.dispose();
+        dashboard dash =new dashboard();
+        dash.setVisible(true);
+        Userpage up = new Userpage();
+        dash.maindesktop.add(up).setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void l_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_l_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_l_nameActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void C_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_contactActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_C_contactActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+        male.setSelected(false);
+        if(female.isSelected()){
+        male.setSelected(false);
+        gender = "Female";
+        
+        }else{
+        gender = null;
+        }
+    }//GEN-LAST:event_femaleActionPerformed
+
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
+        // TODO add your handling code here:
+     if(male.isSelected()){
+     female.setSelected(false);
+     gender = "Male";
+     }else{
+     gender = null;
+     }
+    }//GEN-LAST:event_maleActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        if(action.equals("Add")){
+                 dpconnector dbc = new dpconnector();
+        dbc.insertData("INSERT INTO tbl_customer (t_name, t_lname, t_gender, t_status,  t_address, t_contact, t_email) "
+                + "VALUES ('"+C_name.getText()+"', '"+l_name.getText()+"','"+gender+"','"+combobox.getSelectedItem()+"',"
+                        + "'"+C_address.getText()+"','"+C_contact.getText()+"','"+Email.getText()+"')");
+        }
+        else if(action.equals("Edit")){
+                 dpconnector dbc = new dpconnector();
+        int num = dbc.updateData("UPDATE tbl_customer "
+                + "SET t_name = '"+C_name.getText()+"', t_lname='"+l_name.getText()+"',t_address='"+C_address.getText()+"', "
+                        + "t_status ='"+combobox.getSelectedItem()+"', t_gender='"+gender+"' ,t_email='"+Email.getText()+"', t_contact='"+C_contact.getText()+"'"
+                                + "WHERE t_id = '"+c_id.getText()+"'");
+       
+        if(num == 0){
+           
+        }else{
+           JOptionPane.showMessageDialog(null, "Updated Successfully!");
+
+        }
+        }
+        dashboard dash =new dashboard();
+        dash.setVisible(true);
+        Userpage up = new Userpage();
+        dash.maindesktop.add(up).setVisible(true);
+        this.dispose();
+        
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboboxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,8 +329,15 @@ public class signin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField C_address;
+    public javax.swing.JTextField C_contact;
+    public javax.swing.JTextField C_name;
+    public javax.swing.JTextField Email;
+    public javax.swing.JTextField c_id;
+    public javax.swing.JComboBox<String> combobox;
+    public javax.swing.JRadioButton female;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -270,22 +346,13 @@ public class signin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField9;
+    public javax.swing.JPanel jPanel6;
+    public javax.swing.JTextField l_name;
+    public javax.swing.JRadioButton male;
     // End of variables declaration//GEN-END:variables
 }

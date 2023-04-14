@@ -46,10 +46,10 @@ public class dpconnector {
                 System.out.println("Connection Error: "+e);
             }
     }
-    public void deleteData(int id) {
+    public void deleteData(int id, String tbl, String tbl_id) {
     try {
        
-        PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM tbl_customer WHERE t_id = ?");
+        PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM "+tbl+" WHERE "+tbl_id+" = ?");
         stmt.setInt(1, id);
        
         int rowsDeleted = stmt.executeUpdate();
