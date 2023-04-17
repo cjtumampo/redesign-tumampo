@@ -64,16 +64,26 @@ public class property extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         raddress = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        property_table = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
         rid = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        property_table = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        City = new javax.swing.JComboBox<>();
+        Barangay = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        province = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -82,23 +92,23 @@ public class property extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("House type");
+        jLabel1.setText("Property type");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 380, 110, 30);
+        jLabel1.setBounds(20, 530, 110, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("House Number");
+        jLabel2.setText("Property ID");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(20, 80, 110, 30);
+        jLabel2.setBounds(20, 230, 110, 30);
         jPanel1.add(rnum);
-        rnum.setBounds(130, 120, 280, 30);
+        rnum.setBounds(130, 270, 280, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("House Price");
+        jLabel3.setText("Property Price");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(20, 170, 100, 30);
+        jLabel3.setBounds(20, 320, 100, 30);
         jPanel1.add(rprice);
-        rprice.setBounds(130, 170, 280, 30);
+        rprice.setBounds(130, 320, 280, 30);
 
         jButton1.setBackground(new java.awt.Color(161, 197, 53));
         jButton1.setText("Save");
@@ -108,7 +118,7 @@ public class property extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(330, 440, 80, 30);
+        jButton1.setBounds(330, 590, 80, 30);
 
         combox1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         combox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Rented", "Pending", "Under-maintenance" }));
@@ -119,7 +129,7 @@ public class property extends javax.swing.JFrame {
             }
         });
         jPanel1.add(combox1);
-        combox1.setBounds(130, 340, 280, 30);
+        combox1.setBounds(130, 490, 280, 30);
         combox1.getAccessibleContext().setAccessibleDescription("");
 
         rtype.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -130,17 +140,17 @@ public class property extends javax.swing.JFrame {
             }
         });
         jPanel1.add(rtype);
-        rtype.setBounds(130, 380, 280, 30);
+        rtype.setBounds(130, 530, 280, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("House Location");
+        jLabel4.setText("Property Location");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 210, 110, 30);
+        jLabel4.setBounds(20, 360, 110, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("House Status");
+        jLabel5.setText("Property Status");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(20, 340, 110, 30);
+        jLabel5.setBounds(20, 490, 110, 30);
 
         raddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,28 +158,57 @@ public class property extends javax.swing.JFrame {
             }
         });
         jPanel1.add(raddress);
-        raddress.setBounds(130, 220, 280, 110);
+        raddress.setBounds(130, 360, 280, 30);
+        jPanel1.add(rid);
+        rid.setBounds(130, 230, 150, 30);
 
-        jPanel2.setBackground(new java.awt.Color(178, 63, 48));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Property Number");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(20, 270, 110, 30);
+
+        jButton5.setText("Cancel");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5);
+        jButton5.setBounds(240, 590, 80, 30);
+
+        jPanel3.setBackground(new java.awt.Color(178, 63, 48));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("PROPERTY DETAILS");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 280, 20));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(161, 197, 53));
-        jButton2.setText("Refresh");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 90, 30));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 440, 30));
 
-        jButton3.setBackground(new java.awt.Color(236, 24, 1));
-        jButton3.setText("Delete");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 90, 30));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setText("Search by");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-search-24.png"))); // NOI18N
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 30, 30));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 70, 30));
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 570, 90));
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(0, 70, 1010, 90);
 
         jButton4.setBackground(new java.awt.Color(161, 197, 53));
         jButton4.setText("Update");
@@ -178,7 +217,28 @@ public class property extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 90, 30));
+        jPanel1.add(jButton4);
+        jButton4.setBounds(440, 200, 90, 30);
+
+        jButton2.setBackground(new java.awt.Color(161, 197, 53));
+        jButton2.setText("Refresh");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(540, 200, 90, 30);
+
+        jButton3.setBackground(new java.awt.Color(236, 24, 1));
+        jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3);
+        jButton3.setBounds(640, 200, 90, 30);
 
         property_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,43 +258,53 @@ public class property extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(property_table);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 630, 380));
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(440, 240, 550, 380);
 
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+        jLabel8.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rsz_1rsz_capture-removebg-preview.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 310, 30));
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(20, 10, 130, 50);
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(420, 10, 650, 460);
-        jPanel1.add(rid);
-        rid.setBounds(130, 80, 150, 30);
+        jPanel1.add(City);
+        City.setBounds(270, 400, 140, 30);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("House Number");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 120, 110, 30);
-
-        jButton5.setText("Cancel");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        Barangay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                BarangayActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5);
-        jButton5.setBounds(240, 440, 80, 30);
+        jPanel1.add(Barangay);
+        Barangay.setBounds(130, 440, 130, 30);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox4);
+        jComboBox4.setBounds(270, 440, 140, 30);
+
+        province.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cebu", "Bohol" }));
+        province.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                provinceActionPerformed(evt);
+            }
+        });
+        jPanel1.add(province);
+        province.setBounds(130, 400, 130, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1081, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1005, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
         );
 
         pack();
@@ -346,6 +416,76 @@ dpconnector dbc = new dpconnector();
         displayproperty();
     }//GEN-LAST:event_jTextField1KeyReleased
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        dashboard dash = new dashboard();
+        dash.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void provinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinceActionPerformed
+        // TODO add your handling code here:
+        if (province.getSelectedItem().equals("Cebu")){
+        
+            City.setSelectedItem(null);
+            City.addItem("Cebu City");
+            City.addItem("Minglanilla");
+            City.addItem("Naga");
+            City.addItem("Toledo");
+
+
+        }
+        else if (province.getSelectedItem().equals("Bohol")){
+        
+            City.setSelectedItem(null);
+            City.addItem("Tagbilaran City");
+            City.addItem("Alburquerque");
+            City.addItem("Alicia");
+            City.addItem("Anda");
+
+        }
+        
+         if (City.getSelectedItem().equals("Cebu City")){
+                   
+            Barangay.addItem("Adlaon");
+            Barangay.addItem("Agsungot");
+            Barangay.addItem("Babag");
+            Barangay.addItem("Bacayan");
+            Barangay.addItem("Banilad");
+            Barangay.addItem("Basak Pardo");
+            Barangay.addItem("Binaliw");
+            Barangay.addItem("Bonbon");
+            Barangay.addItem("Budlaan");
+            Barangay.addItem("Busay");
+            Barangay.addItem("Capitol Site");
+            Barangay.addItem("Guadalupe");
+
+        }
+        else if (City.getSelectedItem().equals("Minglanilla")){
+
+            
+            Barangay.addItem("Poblacion Ward I");
+            Barangay.addItem("Poblacion Ward II");
+            Barangay.addItem("Poblacion Ward III");
+            Barangay.addItem("Poblacion Ward IV");
+            Barangay.addItem("Tubod");
+            Barangay.addItem("Tulay");
+            Barangay.addItem("Tungkop");
+            Barangay.addItem("Pakigne");
+            Barangay.addItem("Calajoan");
+            Barangay.addItem("Looc");
+            Barangay.addItem("Pagsabungan");
+            Barangay.addItem("Linao");  
+
+            
+        } 
+    }//GEN-LAST:event_provinceActionPerformed
+
+    private void BarangayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BarangayActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_BarangayActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -382,23 +522,33 @@ dpconnector dbc = new dpconnector();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Barangay;
+    private javax.swing.JComboBox<String> City;
     private javax.swing.JComboBox<String> combox1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable property_table;
+    private javax.swing.JComboBox<String> province;
     private javax.swing.JTextField raddress;
     private javax.swing.JTextField rid;
     private javax.swing.JTextField rnum;

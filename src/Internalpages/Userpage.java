@@ -61,9 +61,6 @@ public class Userpage extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Customer_table = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -72,28 +69,13 @@ public class Userpage extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Customer_table = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(790, 550));
 
         jPanel1.setBackground(new java.awt.Color(204, 102, 0));
         jPanel1.setLayout(null);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Customer_table.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        Customer_table.setOpaque(false);
-        Customer_table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Customer_tableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Customer_table);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 700, 280));
-
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(20, 160, 750, 340);
 
         jPanel3.setBackground(new java.awt.Color(178, 63, 48));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -174,6 +156,18 @@ public class Userpage extends javax.swing.JInternalFrame {
         jPanel1.add(jButton4);
         jButton4.setBounds(230, 110, 80, 30);
 
+        Customer_table.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        Customer_table.setOpaque(false);
+        Customer_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Customer_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Customer_table);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 170, 730, 300);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,6 +207,7 @@ public class Userpage extends javax.swing.JInternalFrame {
         }else{
             TableModel model = Customer_table.getModel();
             signin sf = new signin();
+            sf.setVisible(true);
             sf.c_id.setText(""+model.getValueAt(RowIndex, 0));
             sf.C_name.setText(""+model.getValueAt(RowIndex, 1));
             sf.l_name.setText(""+model.getValueAt(RowIndex, 2));
@@ -279,6 +274,26 @@ public class Userpage extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        mainFrame.dispose();      
+        Booking b = new Booking();
+        b.setVisible(true);
+        int RowIndex  = Customer_table.getSelectedRow();
+        if(RowIndex < 0){
+            JOptionPane.showMessageDialog(null,"Successfully Booked.","Alert",JOptionPane.WARNING_MESSAGE);
+        }else{
+            TableModel model = Customer_table.getModel();
+            b.jTextField2.setText(""+model.getValueAt(RowIndex, 1));
+            b.jTextField1.setText(""+model.getValueAt(RowIndex, 2));
+            b.jTextField3.setText(model.getValueAt(RowIndex, 6).toString());
+            b.jTextField4.setText(model.getValueAt(RowIndex, 7).toString());
+            
+            b.jTextField2.setEditable(false);
+            b.jTextField1.setEditable(false);
+            b.jTextField3.setEditable(false);
+            b.jTextField4.setEditable(false);
+            
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
@@ -292,7 +307,6 @@ public class Userpage extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

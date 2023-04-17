@@ -5,7 +5,7 @@
  */
 package tumampo.re.design;
 
-import Internalpages.DashBoardPage;
+import Internalpages.dbp;
 import Internalpages.LoginForm;
 import Internalpages.Userpage;
 import Internalpages.settings;
@@ -320,8 +320,8 @@ public class dashboard extends javax.swing.JFrame {
 
     private void dashpaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpaneMouseClicked
         // TODO add your handling code here:
-        DashBoardPage dbp = new DashBoardPage();
-        maindesktop.add(dbp).setVisible(true);
+        dbp d = new dbp();
+        maindesktop.add(d).setVisible(true);
     }//GEN-LAST:event_dashpaneMouseClicked
 
     private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
@@ -439,8 +439,4 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel settings;
     private javax.swing.JPanel userpane;
     // End of variables declaration//GEN-END:variables
-
-    private SimpleDateFormat SimpleDateFormat(String ddMMyyyy) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
