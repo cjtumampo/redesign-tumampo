@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package Internalpages;
-
+import config.dpconnector;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ACER
@@ -17,7 +21,7 @@ public class newuser extends javax.swing.JFrame {
     public newuser() {
         initComponents();
     }
-        String Gender;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,24 +36,21 @@ public class newuser extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        n_name = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        n_surname = new javax.swing.JTextField();
+        surname = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        n_address = new javax.swing.JTextField();
+        x_address = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        n_email = new javax.swing.JTextField();
+        x_email = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        n_contact = new javax.swing.JTextField();
+        x_contact = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        n_male = new javax.swing.JRadioButton();
-        n_female = new javax.swing.JRadioButton();
-        n_combobox = new javax.swing.JComboBox<>();
-        password = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
+        password1 = new javax.swing.JPasswordField();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -82,43 +83,43 @@ public class newuser extends javax.swing.JFrame {
         jLabel1.setText("TENANT REGESTRATION FORM ");
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 50));
 
-        n_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(n_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 170, 30));
+        fname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
 
         jLabel2.setText("Surname");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 90, -1));
 
-        n_surname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        n_surname.addActionListener(new java.awt.event.ActionListener() {
+        surname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        surname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                n_surnameActionPerformed(evt);
+                surnameActionPerformed(evt);
             }
         });
-        jPanel6.add(n_surname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 170, 30));
+        jPanel6.add(surname, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 210, 30));
         jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, 20));
 
-        n_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(n_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 170, 30));
+        x_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(x_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 210, 30));
 
         jLabel4.setText("First name");
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jLabel5.setText("Address");
-        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 50, 20));
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 90, 20));
 
-        n_email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(n_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 170, 30));
+        x_email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(x_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 220, 30));
 
         jLabel6.setText("Email ");
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        n_contact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        n_contact.addActionListener(new java.awt.event.ActionListener() {
+        x_contact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        x_contact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                n_contactActionPerformed(evt);
+                x_contactActionPerformed(evt);
             }
         });
-        jPanel6.add(n_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 170, 30));
+        jPanel6.add(x_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 220, 30));
 
         jLabel8.setText("Password");
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
@@ -139,35 +140,11 @@ public class newuser extends javax.swing.JFrame {
         });
         jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 80, 40));
 
-        n_male.setText(" Male ");
-        n_male.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                n_maleActionPerformed(evt);
-            }
-        });
-        jPanel6.add(n_male, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 60, 30));
-
-        n_female.setText("Female");
-        n_female.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                n_femaleActionPerformed(evt);
-            }
-        });
-        jPanel6.add(n_female, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 90, 30));
-
-        n_combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Married", "Divorced", "Widow" }));
-        n_combobox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                n_comboboxActionPerformed(evt);
-            }
-        });
-        jPanel6.add(n_combobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 140, 30));
-
-        password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 170, 30));
-
         jLabel9.setText("Mobile Number");
         jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 216, -1, 10));
+
+        password1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.add(password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 220, 30));
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 470, 530));
 
@@ -216,18 +193,73 @@ public class newuser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void n_surnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_surnameActionPerformed
+    private void surnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_n_surnameActionPerformed
+    }//GEN-LAST:event_surnameActionPerformed
 
-    private void n_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_contactActionPerformed
+    private void x_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x_contactActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_n_contactActionPerformed
+    }//GEN-LAST:event_x_contactActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        String hashedpass = null;
+        if (fname.getText() == null || fname.getText().trim().isEmpty()) { 
+            JOptionPane.showMessageDialog(null, "First Name cannot be blank. Please Fill in.",
+      "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if (surname.getText() == null || surname.getText().trim().isEmpty()) { 
+            JOptionPane.showMessageDialog(null, "Surname cannot be blank. Please Fill in.",
+      "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if (x_email.getText() == null || x_email.getText().trim().isEmpty()) { 
+            JOptionPane.showMessageDialog(null, "Email cannot be blank. Please Fill in.",
+      "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if (x_address.getText() == null || x_address.getText().trim().isEmpty()) { 
+            JOptionPane.showMessageDialog(null, "Address cannot be blank. Please Fill in.",
+      "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if (x_contact.getText() == null || x_contact.getText().trim().isEmpty()) { 
+            JOptionPane.showMessageDialog(null, "Number cannot be blank. Please Fill in.",
+      "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if (password1.getText() == null || password1.getText().trim().isEmpty()) { 
+            JOptionPane.showMessageDialog(null, "Password cannot be blank. Please Fill in.",
+      "Error!", JOptionPane.ERROR_MESSAGE);
+        }                    
+        if (password1.getText().length() < 8) {
+              JOptionPane.showMessageDialog(null, "Password is too short. Please enter a password that is at least 8 characters long.",
+       "Error!", JOptionPane.ERROR_MESSAGE);
+        }else {
+
+        try{
+             MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(password1.getText().getBytes());
+            byte[] byteData = md.digest();
+            StringBuffer sb = new StringBuffer();
+                for (int i = 0; i < byteData.length; i++) {
+                  sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+                   }
+                hashedpass = sb.toString();
+        }catch(NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
+        dpconnector dbc = new dpconnector();
+                dbc.insertData("INSERT INTO tb_user (u_fname, u_Lname, u_email, u_num,  u_address, u_pass) "
+                + "VALUES ('"+fname.getText()+"', '"+surname.getText()+"','"+x_email.getText()+"',"
+                        + "'"+x_contact.getText()+"','"+x_address.getText()+"','"+hashedpass+"')");
+                
+        JOptionPane.showMessageDialog(null, "Successfully Registered",
+       "MESSAGE!", JOptionPane.INFORMATION_MESSAGE); 
+        LoginForm L = new LoginForm();
+        L.setVisible(true);
+        this.dispose();
+        
+              }
 
         
+ 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -235,32 +267,6 @@ public class newuser extends javax.swing.JFrame {
         // TODO add your handling code here:
       
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void n_maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_maleActionPerformed
-        // TODO add your handling code here:
-        if(n_male.isSelected()){
-            n_female.setSelected(false);
-            Gender = "Male";
-        }else{
-            Gender = null;
-        }
-    }//GEN-LAST:event_n_maleActionPerformed
-
-    private void n_femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_femaleActionPerformed
-        // TODO add your handling code here:
-        n_male.setSelected(false);
-        if(n_female.isSelected()){
-            n_male.setSelected(false);
-            Gender = "Female";
-
-        }else{
-            Gender = null;
-        }
-    }//GEN-LAST:event_n_femaleActionPerformed
-
-    private void n_comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_comboboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_n_comboboxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,6 +304,7 @@ public class newuser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField fname;
     private javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -315,14 +322,10 @@ public class newuser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     public javax.swing.JPanel jPanel6;
-    public javax.swing.JTextField n_address;
-    public javax.swing.JComboBox<String> n_combobox;
-    public javax.swing.JTextField n_contact;
-    public javax.swing.JTextField n_email;
-    public javax.swing.JRadioButton n_female;
-    public javax.swing.JRadioButton n_male;
-    public javax.swing.JTextField n_name;
-    public javax.swing.JTextField n_surname;
-    private javax.swing.JPasswordField password;
+    private javax.swing.JPasswordField password1;
+    public javax.swing.JTextField surname;
+    public javax.swing.JTextField x_address;
+    public javax.swing.JTextField x_contact;
+    private javax.swing.JTextField x_email;
     // End of variables declaration//GEN-END:variables
 }
