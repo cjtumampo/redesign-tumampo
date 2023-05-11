@@ -5,9 +5,22 @@
  */
 package Internalpages;
 
+import com.mysql.jdbc.PreparedStatement;
+import config.dpconnector;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -19,17 +32,43 @@ public class userset extends javax.swing.JInternalFrame {
     /**
      * Creates new form userset
      */
+    File F = null;
+    String path = null;
+    private ImageIcon Format = null;
+    String fname = null;
+    int s = 0;
+    byte [] pimage = null;
+    
     public userset() {
         initComponents();
+        connect();
     this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
     BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
     bi.setNorthPane(null);
+    
+    }
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    public void connect(){
+    
+        try{
+        Class.forName("com.mysql.jdbc.Driver");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/house_rent","root", "");
+        }catch(ClassNotFoundException ex){
+        Logger.getLogger(userset.class.getName()).log(Level.SEVERE, null,ex);
+        }catch(SQLException ex){
+        Logger.getLogger(userset.class.getName()).log(Level.SEVERE, null,ex);
+        }
     }
     Color navcolor = new Color(0,102,102);
     Color navbar = new Color (240,240,240);
     Color Hdcolor = new Color (0,102,102);
     Color buttons = new Color(0,153,153);
 
+     dpconnector dbc = new dpconnector();
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,8 +80,9 @@ public class userset extends javax.swing.JInternalFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        imagePath = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        imagelabel = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -71,14 +111,20 @@ public class userset extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-male-user-100 (1).png"))); // NOI18N
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 5, 190, 140));
+        imagePath.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagePath.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-male-user-100 (1).png"))); // NOI18N
+        jPanel3.add(imagePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 5, 190, 140));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Upload Image");
         jButton1.setOpaque(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 110, 30));
+        jPanel3.add(imagelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 190, 30));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 420));
 
@@ -159,8 +205,29 @@ public class userset extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter fnwf = new FileNameExtensionFilter("PNG JPG AND JPEG", "png", "jpg", "jpeg" );
+        fileChooser.addChoosableFileFilter(fnwf);
+        int load = fileChooser.showOpenDialog(null);
+        
+        if (load == fileChooser.APPROVE_OPTION){
+            F = fileChooser.getSelectedFile();
+            path = F.getAbsolutePath();
+            imagelabel.setText(path);
+            ImageIcon II = new ImageIcon(path);
+            Image img = II.getImage().getScaledInstance(200,200, Image.SCALE_SMOOTH);
+            imagePath.setIcon(new ImageIcon(img));
+        }else{
+        
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imagePath;
+    private javax.swing.JLabel imagelabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -170,7 +237,6 @@ public class userset extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -250,11 +250,11 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
            // TODO add your handling code here:
-       
-        
-        dashboard dash = new dashboard();
-        dash.setVisible(true);
         this.dispose();
+        dashboard dash =new dashboard();
+        dash.setVisible(true);
+        dbp up = new dbp();
+        dash.maindesktop.add(up).setVisible(true);
     }//GEN-LAST:event_loginMouseClicked
 
     private void minMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minMouseClicked

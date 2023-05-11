@@ -21,7 +21,9 @@ public class newuser extends javax.swing.JFrame {
     public newuser() {
         initComponents();
     }
-    
+    String gender;
+    String Stat;
+    String action;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +53,9 @@ public class newuser extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         password1 = new javax.swing.JPasswordField();
+        male = new javax.swing.JRadioButton();
+        female = new javax.swing.JRadioButton();
+        combobox = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -145,6 +150,30 @@ public class newuser extends javax.swing.JFrame {
 
         password1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.add(password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 220, 30));
+
+        male.setText(" Male ");
+        male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleActionPerformed(evt);
+            }
+        });
+        jPanel6.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 60, 30));
+
+        female.setText("Female");
+        female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleActionPerformed(evt);
+            }
+        });
+        jPanel6.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 80, 30));
+
+        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Married", "Divorced", "Widow" }));
+        combobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxActionPerformed(evt);
+            }
+        });
+        jPanel6.add(combobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 160, 30));
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 470, 530));
 
@@ -246,9 +275,9 @@ public class newuser extends javax.swing.JFrame {
             e.printStackTrace();
         }
         dpconnector dbc = new dpconnector();
-                dbc.insertData("INSERT INTO tb_user (u_fname, u_Lname, u_email, u_num,  u_address, u_pass) "
+                dbc.insertData("INSERT INTO tbl_customer (t_name, t_lname, t_email, t_contact, t_gender, t_status, t_address, t_pass) "
                 + "VALUES ('"+fname.getText()+"', '"+surname.getText()+"','"+x_email.getText()+"',"
-                        + "'"+x_contact.getText()+"','"+x_address.getText()+"','"+hashedpass+"')");
+                        + "'"+x_contact.getText()+"','"+gender+"','"+combobox.getSelectedItem()+"','"+x_address.getText()+"','"+hashedpass+"')");
                 
         JOptionPane.showMessageDialog(null, "Successfully Registered",
        "MESSAGE!", JOptionPane.INFORMATION_MESSAGE); 
@@ -267,6 +296,32 @@ public class newuser extends javax.swing.JFrame {
         // TODO add your handling code here:
       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
+        // TODO add your handling code here:
+        if(male.isSelected()){
+            female.setSelected(false);
+            gender = "Male";
+        }else{
+            gender = null;
+        }
+    }//GEN-LAST:event_maleActionPerformed
+
+    private void femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleActionPerformed
+        // TODO add your handling code here:
+        male.setSelected(false);
+        if(female.isSelected()){
+            male.setSelected(false);
+            gender = "Female";
+
+        }else{
+            gender = null;
+        }
+    }//GEN-LAST:event_femaleActionPerformed
+
+    private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboboxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,6 +359,8 @@ public class newuser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> combobox;
+    public javax.swing.JRadioButton female;
     public javax.swing.JTextField fname;
     private javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
@@ -322,6 +379,7 @@ public class newuser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     public javax.swing.JPanel jPanel6;
+    public javax.swing.JRadioButton male;
     private javax.swing.JPasswordField password1;
     public javax.swing.JTextField surname;
     public javax.swing.JTextField x_address;

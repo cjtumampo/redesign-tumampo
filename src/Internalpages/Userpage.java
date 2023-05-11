@@ -12,15 +12,21 @@ package Internalpages;
 import com.mysql.jdbc.Statement;
 import config.connection;
 import config.dpconnector;
+import java.awt.Color;
+import static java.awt.Color.BLACK;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
@@ -37,8 +43,7 @@ public class Userpage extends javax.swing.JInternalFrame {
     BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
     bi.setNorthPane(null);
     }
-    
-    
+    Color navcolor = new Color(0,102,102);
 
     public void displaydata()
     {
@@ -49,6 +54,21 @@ public class Userpage extends javax.swing.JInternalFrame {
         }catch(SQLException ex){
         System.out.println("Error Message");
         }
+    DefaultTableModel model = (DefaultTableModel) Customer_table.getModel();
+    String[] columnIdentifiers = {"ID", "First Name","Last Name", "Address", "Gender", "Civil Status", "Contact Number"};
+    model.setColumnIdentifiers(columnIdentifiers);
+    
+    TableColumnModel columnModel = Customer_table.getColumnModel();
+    columnModel.getColumn(0).setPreferredWidth(1);
+    columnModel.getColumn(1).setPreferredWidth(50);
+    columnModel.getColumn(4).setPreferredWidth(1);
+    Customer_table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    
+    Customer_table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+    Customer_table.getTableHeader().setOpaque(false);
+    Customer_table.getTableHeader().setBackground(navcolor);
+    Customer_table.getTableHeader().setForeground(BLACK);
+    Customer_table.setRowHeight(25);
     }
 
     /**

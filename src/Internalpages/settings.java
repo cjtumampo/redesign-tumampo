@@ -120,7 +120,7 @@ public class settings extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 330, 120));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 330, 110));
 
         jPanel6.setBackground(new java.awt.Color(224, 152, 67));
 
