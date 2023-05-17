@@ -5,10 +5,21 @@
  */
 package Internalpages;
 
+import com.mysql.jdbc.PreparedStatement;
+import config.dpconnector;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
@@ -27,6 +38,10 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
     }
+    Connection con = null;
+    ResultSet rst = null;
+    PreparedStatement pst = null;
+    
     Color navcolor = new Color(0,102,102);
     Color navbar = new Color (240,240,240);
     Color Hdcolor = new Color (0,102,102);
@@ -60,7 +75,6 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
         login = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         cancel = new javax.swing.JPanel();
@@ -69,6 +83,7 @@ public class LoginForm extends javax.swing.JFrame {
         close = new javax.swing.JLabel();
         min = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -90,19 +105,6 @@ public class LoginForm extends javax.swing.JFrame {
         username.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "\tUsername", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 14))); // NOI18N
         jPanel1.add(username);
         username.setBounds(540, 230, 250, 50);
-
-        password.setBackground(new java.awt.Color(0, 102, 102));
-        password.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        password.setToolTipText("*");
-        password.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "\tPassword", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 14))); // NOI18N
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
-            }
-        });
-        jPanel1.add(password);
-        password.setBounds(540, 290, 250, 50);
 
         login.setBackground(new java.awt.Color(255, 255, 255));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -209,6 +211,12 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1.add(jLabel6);
         jLabel6.setBounds(520, 390, 300, 20);
 
+        jPasswordField1.setBackground(new java.awt.Color(0, 102, 102));
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 14))); // NOI18N
+        jPasswordField1.setOpaque(false);
+        jPanel1.add(jPasswordField1);
+        jPasswordField1.setBounds(540, 290, 250, 50);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -223,10 +231,6 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
 
     private void loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseEntered
         // TODO add your handling code here:
@@ -250,11 +254,53 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
            // TODO add your handling code here:
-        this.dispose();
-        dashboard dash =new dashboard();
-        dash.setVisible(true);
-        dbp up = new dbp();
-        dash.maindesktop.add(up).setVisible(true);
+        String user = username.getText();
+        String pass = jPasswordField1.getText();
+        
+        
+        if (username.getText().isEmpty())
+        {
+        JOptionPane.showMessageDialog(null," Please input Username",
+         "User Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if( jPasswordField1.getText().isEmpty()){
+        JOptionPane.showMessageDialog(null," Please input Password",
+         "User Error!", JOptionPane.ERROR_MESSAGE);
+        }else{
+         try{
+             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_rent", "root", "");
+             dpconnector dbc = new dpconnector();
+             String hashedpass = null;
+             
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(jPasswordField1.getText().getBytes());
+            byte[] byteData = md.digest();
+            StringBuffer sb = new StringBuffer();
+                for (int i = 0; i < byteData.length; i++) {
+                  sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+                   }
+                hashedpass = sb.toString();
+                ResultSet rs = dbc.getData("SELECT * FROM tb_user Where u_email = '" +username.getText()+ " '  AND u_pass = '" + hashedpass + "'");
+                if (rs.next()){
+                            JOptionPane.showMessageDialog(null," Logged In Succesfully",
+                             "System Message!", JOptionPane.ERROR_MESSAGE);
+                         this.dispose();
+                         dashboard dash =new dashboard();
+                         dash.setVisible(true);
+                         dbp up = new dbp();
+                         dash.maindesktop.add(up).setVisible(true);
+                }else{
+                        JOptionPane.showMessageDialog(null," Username Or Password Incorrect",
+                        "User Error!", JOptionPane.ERROR_MESSAGE);
+                }
+        }catch(SQLException | NoSuchAlgorithmException ex){
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        
+        }
+
     }//GEN-LAST:event_loginMouseClicked
 
     private void minMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minMouseClicked
@@ -323,9 +369,9 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel login;
     private javax.swing.JLabel min;
-    private javax.swing.JTextField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

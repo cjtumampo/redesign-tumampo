@@ -55,7 +55,7 @@ public class Userpage extends javax.swing.JInternalFrame {
         System.out.println("Error Message");
         }
     DefaultTableModel model = (DefaultTableModel) Customer_table.getModel();
-    String[] columnIdentifiers = {"ID", "First Name","Last Name", "Address", "Gender", "Civil Status", "Contact Number"};
+    String[] columnIdentifiers = {"ID", "First Name","Last Name", "Address", "Gender", "Civil Status", "Contact No.", "Email"};
     model.setColumnIdentifiers(columnIdentifiers);
     
     TableColumnModel columnModel = Customer_table.getColumnModel();
@@ -294,25 +294,26 @@ public class Userpage extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+
+        int RowIndex  = Customer_table.getSelectedRow();
+        if(Customer_table.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null,"Select a tenant to book.","Alert",JOptionPane.WARNING_MESSAGE);
+        }else{
         JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
         mainFrame.dispose();      
         Booking b = new Booking();
         b.setVisible(true);
-        int RowIndex  = Customer_table.getSelectedRow();
-        if(RowIndex < 0){
-            JOptionPane.showMessageDialog(null,"Successfully Booked.","Alert",JOptionPane.WARNING_MESSAGE);
-        }else{
             TableModel model = Customer_table.getModel();
             b.jTextField2.setText(""+model.getValueAt(RowIndex, 1));
             b.jTextField1.setText(""+model.getValueAt(RowIndex, 2));
             b.jTextField3.setText(model.getValueAt(RowIndex, 6).toString());
             b.jTextField4.setText(model.getValueAt(RowIndex, 7).toString());
-            
+            b.ID.setText(""+model.getValueAt(RowIndex, 0));
             b.jTextField2.setEditable(false);
             b.jTextField1.setEditable(false);
             b.jTextField3.setEditable(false);
-            b.jTextField4.setEditable(false);
-            
+            b.jTextField4.setEditable(false); 
+            b.ID.setEditable(false);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

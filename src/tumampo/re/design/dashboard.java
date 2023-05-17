@@ -365,8 +365,19 @@ public class dashboard extends javax.swing.JFrame {
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         // TODO add your handling code here:
-      
-      this.dispose();
+        String[] options = { "Quit", "Cancel"};
+        int reply = JOptionPane.showOptionDialog(
+            null,
+            "Would You Like To Quit?",
+            "Alert Message", 0, 1, null, options, options[0]
+            );
+        if (reply == 0) {
+            JOptionPane.showMessageDialog(null, "Thank you for using [House Rent System]");
+               System.exit(0);            
+        } else {
+            JOptionPane.showMessageDialog(null, "Continue"); 
+                }
+        
     }//GEN-LAST:event_logoutMouseClicked
 
     private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
