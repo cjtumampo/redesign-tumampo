@@ -15,8 +15,30 @@ public class prints extends javax.swing.JFrame {
      * Creates new form prints
      */
     public prints() {
-        initComponents();
+        initComponents();       
     }
+           public void proceed(){
+String id = ID.getText();
+String fname = FNAMES.getText();
+String lname = LNAME.getText();
+String ADRESS  = ADDRESS.getText();
+String GENDERS  = GENDER.getText();
+String STATUS  = CIVIL.getText(); 
+String CONTACT  = CON.getText();
+String EMAILAD  = EMAIL.getText();
+
+jTextArea1.setText("          EMPLOYEE REPORTS  \n"
+                             +"  .PERSONAL DETAILS \n"
+                             +"   ID.                            :            "+id+"\n"        
+                             +"   FIRST NAME                     :            "+fname+"\n"
+                             +"   LAST  NAME                     :            "+lname+"\n"
+                             +"    ADDRESS                       :            "+ADRESS+"\n"
+                             +"   GENDER                         :            "+GENDERS+"\n"    
+                             +"   CIVIL STATUS                   :            "+STATUS+"\n"
+                             +"   CONTACT NO.                    :            "+CONTACT+"\n"
+                             +"   EMAIL ADDRESS                  :            "+EMAILAD+"\n" );
+
+} 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -99,6 +121,11 @@ public class prints extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jButton1.setText("PRINT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton1);
         jButton1.setBounds(140, 590, 120, 30);
 
@@ -205,6 +232,11 @@ public class prints extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        proceed();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

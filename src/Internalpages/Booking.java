@@ -91,7 +91,6 @@ public class Booking extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         pay1 = new javax.swing.JCheckBox();
@@ -103,6 +102,7 @@ public class Booking extends javax.swing.JFrame {
         ID = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -254,7 +254,6 @@ public class Booking extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("Book Now*");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 150, 27));
-        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 200, 30));
 
         jLabel19.setText("Property ID");
         jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 90, 20));
@@ -360,6 +359,7 @@ public class Booking extends javax.swing.JFrame {
         );
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 120, 40));
+        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 190, 30));
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(60, 90, 740, 530);
