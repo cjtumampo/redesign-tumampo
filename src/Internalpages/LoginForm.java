@@ -25,6 +25,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import tumampo.re.design.dashboard;
+import Internalpages.userset;
 
 /**
  *
@@ -37,6 +38,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
+        
     }
     Connection con = null;
     ResultSet rst = null;
@@ -54,13 +56,13 @@ public class LoginForm extends javax.swing.JFrame {
         panel.setBorder(BorderFactory.createLineBorder(Color.black));
         panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(2.0f)));
 
-    }
-    
+    }   
      void ButtonDefaultColor(JPanel panel)
      {
      panel.setBackground(navbar);
      panel.setBorder(empty);
      }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,6 +86,7 @@ public class LoginForm extends javax.swing.JFrame {
         min = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -217,6 +220,15 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1.add(jPasswordField1);
         jPasswordField1.setBounds(540, 290, 250, 50);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(640, 460, 73, 23);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -256,7 +268,7 @@ public class LoginForm extends javax.swing.JFrame {
            // TODO add your handling code here:
         String user = username.getText();
         String pass = jPasswordField1.getText();
-        
+        userset u = new userset();
         
         if (username.getText().isEmpty())
         {
@@ -280,7 +292,7 @@ public class LoginForm extends javax.swing.JFrame {
                   sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
                    }
                 hashedpass = sb.toString();
-                ResultSet rs = dbc.getData("SELECT * FROM tb_user Where u_email = '" +username.getText()+ " '  AND u_pass = '" + hashedpass + "'");
+                ResultSet rs = dbc.getData("SELECT * FROM tbl_customer Where t_email = '" +username.getText()+ " '  AND t_pass = '" + hashedpass + "'");
                 if (rs.next()){
                             JOptionPane.showMessageDialog(null," Logged In Succesfully",
                              "System Message!", JOptionPane.ERROR_MESSAGE);
@@ -289,6 +301,7 @@ public class LoginForm extends javax.swing.JFrame {
                          dash.setVisible(true);
                          dbp up = new dbp();
                          dash.maindesktop.add(up).setVisible(true);
+                         
                 }else{
                         JOptionPane.showMessageDialog(null," Username Or Password Incorrect",
                         "User Error!", JOptionPane.ERROR_MESSAGE);
@@ -323,6 +336,15 @@ public class LoginForm extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                         this.dispose();
+                         dashboard dash =new dashboard();
+                         dash.setVisible(true);
+                         dbp up = new dbp();
+                         dash.maindesktop.add(up).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,6 +384,7 @@ public class LoginForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel cancel;
     private javax.swing.JLabel close;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

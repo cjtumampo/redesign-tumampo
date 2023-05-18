@@ -12,11 +12,14 @@ import Internalpages.settings;
 import Internalpages.userset;
 import java.awt.Color;
 import internalpages.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import javax.swing.Timer;
 
 /**
  *
@@ -29,8 +32,18 @@ public class dashboard extends javax.swing.JFrame {
      */
     public dashboard() {
         initComponents();
-   
+        Timer t = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date now = new Date();
+                SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+                String dateTime = formatter.format(now);
+                timers.setText(dateTime);
+            }
+        });
+        t.start();
     }
+    
     Color navcolor = new Color(204,102,0);
     Color navbar = new Color (188,71,58);
     Color Hdcolor = new Color (0,102,102);
@@ -52,6 +65,7 @@ public class dashboard extends javax.swing.JFrame {
         head = new javax.swing.JPanel();
         close = new javax.swing.JLabel();
         min = new javax.swing.JLabel();
+        timers = new javax.swing.JLabel();
         maindesktop = new javax.swing.JDesktopPane();
         jLabel24 = new javax.swing.JLabel();
         navigator = new javax.swing.JPanel();
@@ -100,6 +114,9 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
         head.add(min, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, -20, 40, 70));
+
+        timers.setFont(new java.awt.Font("Imprint MT Shadow", 1, 24)); // NOI18N
+        head.add(timers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 330, 50));
 
         body.add(head);
         head.setBounds(160, 0, 790, 70);
@@ -448,6 +465,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel min;
     private javax.swing.JPanel navigator;
     private javax.swing.JPanel settings;
+    private javax.swing.JLabel timers;
     private javax.swing.JPanel userpane;
     // End of variables declaration//GEN-END:variables
 }

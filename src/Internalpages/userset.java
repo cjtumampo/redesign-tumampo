@@ -9,7 +9,9 @@ import com.mysql.jdbc.PreparedStatement;
 import config.dpconnector;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,6 +21,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -32,12 +35,19 @@ public class userset extends javax.swing.JInternalFrame {
     /**
      * Creates new form userset
      */
+    String gender;
+    
     File F = null;
     String path = null;
     private ImageIcon Format = null;
     String fname = null;
     int s = 0;
     byte [] pimage = null;
+    public byte[] imageBytes;
+
+    String filename=null;
+    String imgPath = null;
+   byte[] person_image = null; 
     
     public userset() {
         initComponents();
@@ -47,9 +57,30 @@ public class userset extends javax.swing.JInternalFrame {
     bi.setNorthPane(null);
     
     }
+
+    userset(int sharedVariable) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    userset(String sharedVariable) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
+    public  ImageIcon ResizeImage(String ImagePath, byte[] pic) {
+    ImageIcon MyImage = null;
+        if(ImagePath !=null){
+            MyImage = new ImageIcon(ImagePath);
+        }else{
+            MyImage = new ImageIcon(pic);
+        }
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(image_display.getWidth(), image_display.getHeight(), Image.SCALE_SMOOTH);
+    ImageIcon image = new ImageIcon(newImg);
+    return image;
+}
     
     public void connect(){
     
@@ -61,7 +92,14 @@ public class userset extends javax.swing.JInternalFrame {
         }catch(SQLException ex){
         Logger.getLogger(userset.class.getName()).log(Level.SEVERE, null,ex);
         }
+        
     }
+  
+    public void someMethod() {
+        // Access the global variable
+       String globalVariable = null; 
+    }
+
     Color navcolor = new Color(0,102,102);
     Color navbar = new Color (240,240,240);
     Color Hdcolor = new Color (0,102,102);
@@ -80,14 +118,14 @@ public class userset extends javax.swing.JInternalFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        imagePath = new javax.swing.JLabel();
+        image_display = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         imagelabel = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -95,6 +133,10 @@ public class userset extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
+        male = new javax.swing.JRadioButton();
+        female = new javax.swing.JRadioButton();
+        combobox = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -111,9 +153,9 @@ public class userset extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        imagePath.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagePath.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-male-user-100 (1).png"))); // NOI18N
-        jPanel3.add(imagePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 5, 190, 140));
+        image_display.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        image_display.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-male-user-100 (1).png"))); // NOI18N
+        jPanel3.add(image_display, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 140));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Upload Image");
@@ -123,8 +165,8 @@ public class userset extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 110, 30));
-        jPanel3.add(imagelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 190, 30));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 110, 30));
+        jPanel3.add(imagelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 190, 30));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 420));
 
@@ -140,8 +182,8 @@ public class userset extends javax.swing.JInternalFrame {
         jLabel7.setText("Last Name");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 130, 20));
 
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 230, 30));
+        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 230, 30));
 
         jLabel10.setText("Email");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 130, 20));
@@ -163,6 +205,39 @@ public class userset extends javax.swing.JInternalFrame {
 
         jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 230, 30));
+
+        jButton2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 90, 30));
+
+        male.setText(" Male ");
+        male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleActionPerformed(evt);
+            }
+        });
+        jPanel2.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 60, 30));
+
+        female.setText("Female");
+        female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleActionPerformed(evt);
+            }
+        });
+        jPanel2.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 80, 30));
+
+        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Married", "Divorced", "Widow" }));
+        combobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxActionPerformed(evt);
+            }
+        });
+        jPanel2.add(combobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 160, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 720, -1));
 
@@ -207,28 +282,93 @@ public class userset extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter fnwf = new FileNameExtensionFilter("PNG JPG AND JPEG", "png", "jpg", "jpeg" );
-        fileChooser.addChoosableFileFilter(fnwf);
-        int load = fileChooser.showOpenDialog(null);
+ JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg", "gif", "png");
+        chooser.addChoosableFileFilter(filter);
+        int result = chooser.showSaveDialog(null);
         
-        if (load == fileChooser.APPROVE_OPTION){
-            F = fileChooser.getSelectedFile();
-            path = F.getAbsolutePath();
-            imagelabel.setText(path);
-            ImageIcon II = new ImageIcon(path);
-            Image img = II.getImage().getScaledInstance(200,200, Image.SCALE_SMOOTH);
-            imagePath.setIcon(new ImageIcon(img));
+        if (result == JFileChooser.APPROVE_OPTION){
+            File selectedFile = chooser.getSelectedFile();
+            path = selectedFile.getAbsolutePath();
+            image_display.setIcon(ResizeImage(path,null));
+            imgPath = path;
+            File f = chooser.getSelectedFile();
+            filename = selectedFile.getAbsolutePath();
         }else{
-        
+        JOptionPane.showMessageDialog(null, "Canceled !");
         }
+        
+      
+        try {
+                File image = new File(filename);
+                FileInputStream fis = new FileInputStream(image);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+                
+                for (int readNum; (readNum=fis.read(buf)) !=-1;){
+                 bos.write(buf,0,readNum);
+                }
+                person_image=bos.toByteArray();
+                
+        }catch(Exception e){
+            System.out.println(e);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+                    try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_rent", "root", "");
+            String sql = "INSERT INTO image_tbl (image_path, image_File) VALUES (?,?)";
+            PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql);
+            pst.setString(1, filename);            
+            pst.setBytes(2,person_image);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Successfully Updated!");
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
+        // TODO add your handling code here:
+        if(male.isSelected()){
+            female.setSelected(false);
+            gender = "Male";
+        }else{
+            gender = null;
+        }
+    }//GEN-LAST:event_maleActionPerformed
+
+    private void femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleActionPerformed
+        // TODO add your handling code here:
+        male.setSelected(false);
+        if(female.isSelected()){
+            male.setSelected(false);
+            gender = "Female";
+
+        }else{
+            gender = null;
+        }
+    }//GEN-LAST:event_femaleActionPerformed
+
+    private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboboxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel imagePath;
+    public javax.swing.JComboBox<String> combobox;
+    public javax.swing.JTextField email;
+    public javax.swing.JRadioButton female;
+    private javax.swing.JLabel image_display;
     private javax.swing.JLabel imagelabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -248,8 +388,8 @@ public class userset extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    public javax.swing.JRadioButton male;
     // End of variables declaration//GEN-END:variables
 }

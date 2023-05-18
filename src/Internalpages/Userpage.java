@@ -91,6 +91,7 @@ public class Userpage extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Customer_table = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(790, 550));
 
@@ -174,7 +175,7 @@ public class Userpage extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(230, 110, 80, 30);
+        jButton4.setBounds(220, 110, 80, 30);
 
         Customer_table.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         Customer_table.setOpaque(false);
@@ -187,6 +188,19 @@ public class Userpage extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(20, 170, 730, 300);
+
+        jButton6.setBackground(new java.awt.Color(161, 197, 53));
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton6.setText("PRINT");
+        jButton6.setActionCommand("Dislay");
+        jButton6.setOpaque(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6);
+        jButton6.setBounds(320, 110, 80, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -317,6 +331,26 @@ public class Userpage extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+                int RowIndex  = Customer_table.getSelectedRow();
+        if(Customer_table.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null,"Select a tenant to book.","Alert",JOptionPane.WARNING_MESSAGE);
+        }else{
+        prints p = new prints();
+        p.setVisible(true);
+        TableModel model = Customer_table.getModel();
+        p.ID.setText(""+model.getValueAt(RowIndex, 0));
+        p.FNAMES.setText(""+model.getValueAt(RowIndex, 1));
+        p.LNAME.setText(""+model.getValueAt(RowIndex, 2));
+        p.ADDRESS.setText(""+model.getValueAt(RowIndex, 3));
+        p.GENDER.setText(""+model.getValueAt(RowIndex, 4));
+        p.CIVIL.setText(""+model.getValueAt(RowIndex, 5));
+        p.CON.setText(""+model.getValueAt(RowIndex, 6));
+        p.EMAIL.setText(""+model.getValueAt(RowIndex, 7));
+                }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Customer_table;
@@ -325,6 +359,7 @@ public class Userpage extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
