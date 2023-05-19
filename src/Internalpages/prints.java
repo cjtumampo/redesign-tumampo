@@ -5,6 +5,9 @@
  */
 package Internalpages;
 
+import java.awt.print.PrinterException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ACER
@@ -235,7 +238,19 @@ jTextArea1.setText("          EMPLOYEE REPORTS  \n"
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        proceed();
+         proceed();
+     try{
+      
+         boolean print =jTextArea1.print();
+        if (!print){ 
+        JOptionPane.showMessageDialog(null,"Unable to print!!");
+        }
+         }catch (PrinterException ex) {
+         ex.printStackTrace ();
+               
+                 }
+    
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -298,7 +313,7 @@ jTextArea1.setText("          EMPLOYEE REPORTS  \n"
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
     void FNAME(String string) {
