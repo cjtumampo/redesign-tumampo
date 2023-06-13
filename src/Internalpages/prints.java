@@ -17,10 +17,13 @@ public class prints extends javax.swing.JFrame {
     /**
      * Creates new form prints
      */
+
     public prints() {
-        initComponents();       
+        initComponents(); 
     }
-           public void proceed(){
+
+               
+ public void proceed(){
 String id = ID.getText();
 String fname = FNAMES.getText();
 String lname = LNAME.getText();
@@ -32,14 +35,14 @@ String EMAILAD  = EMAIL.getText();
 
 jTextArea1.setText("          EMPLOYEE REPORTS  \n"
                              +"  .PERSONAL DETAILS \n"
-                             +"   ID.                            :            "+id+"\n"        
-                             +"   FIRST NAME                     :            "+fname+"\n"
-                             +"   LAST  NAME                     :            "+lname+"\n"
-                             +"    ADDRESS                       :            "+ADRESS+"\n"
-                             +"   GENDER                         :            "+GENDERS+"\n"    
-                             +"   CIVIL STATUS                   :            "+STATUS+"\n"
-                             +"   CONTACT NO.                    :            "+CONTACT+"\n"
-                             +"   EMAIL ADDRESS                  :            "+EMAILAD+"\n" );
+                             +"   ID.\t\t :            "+id+"\n"        
+                             +"   FIRST NAME\t\t :            "+fname+"\n"
+                             +"   LAST  NAME\t\t :            "+lname+"\n"
+                             +"    ADDRESS\t\t :            "+ADRESS+"\n"
+                             +"   GENDER\t\t :            "+GENDERS+"\n"    
+                             +"   CIVIL STATUS\t\t :            "+STATUS+"\n"
+                             +"   CONTACT NO.\t\t :            "+CONTACT+"\n"
+                             +"   EMAIL ADDRESS\t\t :            "+EMAILAD+"\n" );
 
 } 
 
@@ -88,7 +91,7 @@ jTextArea1.setText("          EMPLOYEE REPORTS  \n"
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel5.add(jScrollPane1);
-        jScrollPane1.setBounds(460, 90, 470, 540);
+        jScrollPane1.setBounds(340, 570, 140, 50);
 
         jPanel6.setBackground(new java.awt.Color(178, 63, 48));
 
@@ -130,25 +133,25 @@ jTextArea1.setText("          EMPLOYEE REPORTS  \n"
             }
         });
         jPanel5.add(jButton1);
-        jButton1.setBounds(140, 590, 120, 30);
+        jButton1.setBounds(200, 590, 120, 30);
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PRINT TENANT INFO");
         jPanel5.add(jLabel1);
-        jLabel1.setBounds(590, 40, 220, 30);
+        jLabel1.setBounds(160, 40, 220, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("___________________");
         jPanel5.add(jLabel2);
-        jLabel2.setBounds(580, 0, 250, 40);
+        jLabel2.setBounds(150, 0, 250, 40);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("___________________");
         jPanel5.add(jLabel4);
-        jLabel4.setBounds(580, 40, 250, 40);
+        jLabel4.setBounds(150, 40, 250, 40);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("EMAIL ADDRESS  :");
@@ -226,7 +229,7 @@ jTextArea1.setText("          EMPLOYEE REPORTS  \n"
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

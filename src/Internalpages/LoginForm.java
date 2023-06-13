@@ -26,6 +26,8 @@ import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import tumampo.re.design.dashboard;
 import Internalpages.userset;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -38,7 +40,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
-        
+      jButton1.setVisible(false);
     }
     Connection con = null;
     ResultSet rst = null;
@@ -62,6 +64,21 @@ public class LoginForm extends javax.swing.JFrame {
      panel.setBackground(navbar);
      panel.setBorder(empty);
      }
+     
+         public  ImageIcon ResizeImage(String ImagePath, byte[] pic) {
+             dashboard dash =new dashboard();
+    ImageIcon MyImage = null;
+        if(ImagePath !=null){
+            MyImage = new ImageIcon(ImagePath);
+        }else{
+            MyImage = new ImageIcon(pic);
+        }
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(dash.jLabel14.getWidth(), dash.jLabel14.getHeight(), Image.SCALE_SMOOTH);
+    ImageIcon image = new ImageIcon(newImg);
+    return image;
+}
+     
      
 
     /**
@@ -215,6 +232,8 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel6.setBounds(520, 390, 300, 20);
 
         jPasswordField1.setBackground(new java.awt.Color(0, 102, 102));
+        jPasswordField1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPasswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 14))); // NOI18N
         jPasswordField1.setOpaque(false);
         jPanel1.add(jPasswordField1);
@@ -227,7 +246,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(640, 460, 73, 23);
+        jButton1.setBounds(620, 200, 73, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,15 +311,21 @@ public class LoginForm extends javax.swing.JFrame {
                   sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
                    }
                 hashedpass = sb.toString();
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_customer Where t_email = '" +username.getText()+ " '  AND t_pass = '" + hashedpass + "'");
+                ResultSet rs = dbc.getData("SELECT * FROM tb_user Where u_email = '" +username.getText()+ " '  AND u_pass = '" + hashedpass + "'");
                 if (rs.next()){
-                            JOptionPane.showMessageDialog(null," Logged In Succesfully",
-                             "System Message!", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null," Logged In Succesfully");
                          this.dispose();
                          dashboard dash =new dashboard();
                          dash.setVisible(true);
                          dbp up = new dbp();
                          dash.maindesktop.add(up).setVisible(true);
+                         String fnames = rs.getString("u_fname");
+                         String Email = rs.getString("u_email");
+                         dash.name.setText(fnames);
+                         dash.email.setText(Email);
+                         dash.email.setVisible(false);
+                         userset ur = new userset();
+  
                          
                 }else{
                         JOptionPane.showMessageDialog(null," Username Or Password Incorrect",
@@ -339,11 +364,9 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-                         this.dispose();
-                         dashboard dash =new dashboard();
+        dashboard dash =new dashboard();
                          dash.setVisible(true);
-                         dbp up = new dbp();
-                         dash.maindesktop.add(up).setVisible(true);
+                         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

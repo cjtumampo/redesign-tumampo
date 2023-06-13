@@ -8,18 +8,24 @@ package tumampo.re.design;
 import Internalpages.dbp;
 import Internalpages.LoginForm;
 import Internalpages.Userpage;
+import Internalpages.gen;
 import Internalpages.settings;
 import Internalpages.userset;
 import java.awt.Color;
 import internalpages.*;
+import java.awt.BasicStroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.border.Border;
 
 /**
  *
@@ -44,9 +50,34 @@ public class dashboard extends javax.swing.JFrame {
         t.start();
     }
     
+    Border empty = BorderFactory.createEmptyBorder();
+    
+    void ButtonBorderAnimation(JPanel panel){
+        panel.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(2.0f)));
+
+    }   
+     void ButtonDefaultColor(JPanel panel)
+     {
+     panel.setBackground(white);
+     panel.setBorder(empty);
+     }
+    
     Color navcolor = new Color(204,102,0);
     Color navbar = new Color (188,71,58);
     Color Hdcolor = new Color (0,102,102);
+    Color hover  = new Color (178,63,48);
+    Color white = new Color (255,255,255);
+
+    public boolean setter;
+    
+    public void showgen(){
+    gen d = new gen();
+    maindesktop.add(d).setVisible(true);
+    
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,10 +95,20 @@ public class dashboard extends javax.swing.JFrame {
         body = new javax.swing.JPanel();
         head = new javax.swing.JPanel();
         close = new javax.swing.JLabel();
-        min = new javax.swing.JLabel();
         timers = new javax.swing.JLabel();
+        name1 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
+        min = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
+        generalL = new Internalpages.PanelRound();
+        jLabel3 = new javax.swing.JLabel();
+        EmpMAn = new Internalpages.PanelRound();
+        jLabel11 = new javax.swing.JLabel();
+        AP = new Internalpages.PanelRound();
+        jLabel12 = new javax.swing.JLabel();
+        AR = new Internalpages.PanelRound();
+        jLabel13 = new javax.swing.JLabel();
         maindesktop = new javax.swing.JDesktopPane();
-        jLabel24 = new javax.swing.JLabel();
         navigator = new javax.swing.JPanel();
         userpane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -83,12 +124,12 @@ public class dashboard extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        body.setBackground(new java.awt.Color(204, 102, 0));
+        body.setBackground(new java.awt.Color(188, 71, 58));
         body.setLayout(null);
 
         head.setBackground(new java.awt.Color(224, 152, 67));
@@ -104,6 +145,18 @@ public class dashboard extends javax.swing.JFrame {
         });
         head.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, -10, 40, 60));
 
+        timers.setFont(new java.awt.Font("Imprint MT Shadow", 1, 14)); // NOI18N
+        timers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timers.setText("adsad");
+        head.add(timers, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 180, 30));
+
+        name1.setFont(new java.awt.Font("Imprint MT Shadow", 1, 24)); // NOI18N
+        name1.setText("WELCOME");
+        head.add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 150, 40));
+
+        name.setFont(new java.awt.Font("Imprint MT Shadow", 1, 24)); // NOI18N
+        head.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 160, 40));
+
         min.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         min.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         min.setText("_");
@@ -115,31 +168,124 @@ public class dashboard extends javax.swing.JFrame {
         });
         head.add(min, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, -20, 40, 70));
 
-        timers.setFont(new java.awt.Font("Imprint MT Shadow", 1, 24)); // NOI18N
-        head.add(timers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 330, 50));
+        email.setText("jLabel11");
+        head.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 40, 20));
+
+        generalL.setBackground(new java.awt.Color(255, 255, 255));
+        generalL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                generalLMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                generalLMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                generalLMouseExited(evt);
+            }
+        });
+        generalL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Add Property");
+        generalL.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 153, 40));
+
+        head.add(generalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 40));
+
+        EmpMAn.setBackground(new java.awt.Color(255, 255, 255));
+        EmpMAn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EmpMAnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EmpMAnMouseExited(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Employe Maneger");
+
+        javax.swing.GroupLayout EmpMAnLayout = new javax.swing.GroupLayout(EmpMAn);
+        EmpMAn.setLayout(EmpMAnLayout);
+        EmpMAnLayout.setHorizontalGroup(
+            EmpMAnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        EmpMAnLayout.setVerticalGroup(
+            EmpMAnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        head.add(EmpMAn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 160, 40));
+
+        AP.setBackground(new java.awt.Color(255, 255, 255));
+        AP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                APMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                APMouseExited(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Accounts payable");
+
+        javax.swing.GroupLayout APLayout = new javax.swing.GroupLayout(AP);
+        AP.setLayout(APLayout);
+        APLayout.setHorizontalGroup(
+            APLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+        );
+        APLayout.setVerticalGroup(
+            APLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        head.add(AP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 150, 40));
+
+        AR.setBackground(new java.awt.Color(255, 255, 255));
+        AR.setRoundTopRight(50);
+        AR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ARMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ARMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ARMouseExited(evt);
+            }
+        });
+        AR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Accounts Recievable");
+        AR.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 40));
+
+        head.add(AR, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 150, 40));
 
         body.add(head);
-        head.setBounds(160, 0, 790, 70);
+        head.setBounds(160, 0, 790, 90);
 
         maindesktop.setBackground(new java.awt.Color(0, 51, 51));
-
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tumampo/re/design/san-francisco-street-city-usa.jpg"))); // NOI18N
-
-        maindesktop.setLayer(jLabel24, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout maindesktopLayout = new javax.swing.GroupLayout(maindesktop);
         maindesktop.setLayout(maindesktopLayout);
         maindesktopLayout.setHorizontalGroup(
             maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
         maindesktopLayout.setVerticalGroup(
             maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 550, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         body.add(maindesktop);
-        maindesktop.setBounds(160, 70, 790, 550);
+        maindesktop.setBounds(160, 90, 790, 550);
 
         navigator.setBackground(new java.awt.Color(188, 71, 58));
         navigator.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -266,23 +412,16 @@ public class dashboard extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("LOGOUT");
-        logout.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 40));
+        logout.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 60));
 
         navigator.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 160, 60));
 
         body.add(navigator);
-        navigator.setBounds(0, 70, 160, 550);
+        navigator.setBounds(0, 90, 160, 550);
 
-        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rsz_1rsz_capture-removebg-preview.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        body.add(jLabel3);
-        jLabel3.setBounds(20, 10, 130, 50);
+        jLabel14.setText("jLabel14");
+        body.add(jLabel14);
+        jLabel14.setBounds(40, 10, 90, 80);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,7 +431,7 @@ public class dashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
+            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
         );
 
         pack();
@@ -351,6 +490,10 @@ public class dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         userset us = new userset();
         maindesktop.add(us).setVisible(true);
+        us.jTextField1.setText(name.getText());
+        us.email.setText(email.getText());
+        
+        us.someMethod();
     }//GEN-LAST:event_accountsMouseClicked
 
     private void accountsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountsMouseEntered
@@ -373,12 +516,68 @@ public class dashboard extends javax.swing.JFrame {
         setState(ICONIFIED);
     }//GEN-LAST:event_minMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void generalLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generalLMouseClicked
         // TODO add your handling code here:
-        dashboard dash = new dashboard();
-        dash.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel3MouseClicked
+        showgen();
+    }//GEN-LAST:event_generalLMouseClicked
+
+    private void generalLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generalLMouseEntered
+        // TODO add your handling code here:
+        ButtonBorderAnimation(generalL);
+        
+    }//GEN-LAST:event_generalLMouseEntered
+
+    private void EmpMAnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpMAnMouseEntered
+        // TODO add your handling code here:
+        ButtonBorderAnimation(EmpMAn);
+
+    }//GEN-LAST:event_EmpMAnMouseEntered
+
+    private void APMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_APMouseEntered
+        // TODO add your handling code here:
+        ButtonBorderAnimation(AP);
+    }//GEN-LAST:event_APMouseEntered
+
+    private void ARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ARMouseClicked
+
+    private void generalLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generalLMouseExited
+        // TODO add your handling code here:
+        ButtonDefaultColor(generalL);
+
+    }//GEN-LAST:event_generalLMouseExited
+
+    private void ARMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARMouseEntered
+        // TODO add your handling code here:
+        ButtonBorderAnimation(AR);
+    }//GEN-LAST:event_ARMouseEntered
+
+    private void EmpMAnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpMAnMouseExited
+        // TODO add your handling code here:
+        ButtonDefaultColor(EmpMAn);
+    }//GEN-LAST:event_EmpMAnMouseExited
+
+    private void APMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_APMouseExited
+        // TODO add your handling code here:
+        ButtonDefaultColor(AP);
+    }//GEN-LAST:event_APMouseExited
+
+    private void ARMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARMouseExited
+        // TODO add your handling code here:
+        ButtonDefaultColor(AR);
+    }//GEN-LAST:event_ARMouseExited
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        // TODO add your handling code here:
+        logout.setBackground(navbar);
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        // TODO add your handling code here:
+        logout.setBackground(navcolor);
+
+    }//GEN-LAST:event_logoutMouseEntered
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         // TODO add your handling code here:
@@ -387,26 +586,15 @@ public class dashboard extends javax.swing.JFrame {
             null,
             "Would You Like To Quit?",
             "Alert Message", 0, 1, null, options, options[0]
-            );
+        );
         if (reply == 0) {
             JOptionPane.showMessageDialog(null, "Thank you for using [House Rent System]");
-               System.exit(0);            
+            System.exit(0);
         } else {
-            JOptionPane.showMessageDialog(null, "Continue"); 
-                }
-        
+            JOptionPane.showMessageDialog(null, "Continue");
+        }
+
     }//GEN-LAST:event_logoutMouseClicked
-
-    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
-        // TODO add your handling code here:
-        logout.setBackground(navcolor);
-        
-    }//GEN-LAST:event_logoutMouseEntered
-
-    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
-        // TODO add your handling code here:
-        logout.setBackground(navbar);
-    }//GEN-LAST:event_logoutMouseExited
 
     /**
      * @param args the command line arguments
@@ -444,15 +632,23 @@ public class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Internalpages.PanelRound AP;
+    private Internalpages.PanelRound AR;
+    private Internalpages.PanelRound EmpMAn;
     private javax.swing.JPanel accounts;
     private javax.swing.JPanel body;
     private javax.swing.JLabel close;
     private javax.swing.JPanel dashpane;
+    public javax.swing.JLabel email;
+    private Internalpages.PanelRound generalL;
     private javax.swing.JPanel head;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    public javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -463,6 +659,8 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel logout;
     public javax.swing.JDesktopPane maindesktop;
     private javax.swing.JLabel min;
+    public javax.swing.JLabel name;
+    private javax.swing.JLabel name1;
     private javax.swing.JPanel navigator;
     private javax.swing.JPanel settings;
     private javax.swing.JLabel timers;

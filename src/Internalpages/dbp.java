@@ -11,6 +11,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.SwingUtilities;
+import javax.swing.JFrame;
+import internalpages.*;
+import Internalpages.LoginForm;
+import tumampo.re.design.dashboard;
 
 /**
  *
@@ -74,6 +79,9 @@ public class dbp extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel4MouseEntered(evt);
             }
@@ -81,21 +89,12 @@ public class dbp extends javax.swing.JInternalFrame {
                 jPanel4MouseExited(evt);
             }
         });
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("GENERAL LEDGER");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 50));
 
         jPanel1.add(jPanel4);
         jPanel4.setBounds(460, 60, 280, 50);
@@ -200,9 +199,7 @@ public class dbp extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
 
         pack();
@@ -257,6 +254,14 @@ public class dbp extends javax.swing.JInternalFrame {
         
         ButtonDefaultColor(jPanel7);
     }//GEN-LAST:event_jPanel7MouseExited
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        // TODO add your handling code here:
+           dashboard dd = new dashboard();   
+           dd.setter = true;
+           dd.showgen(); 
+           
+    }//GEN-LAST:event_jPanel4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

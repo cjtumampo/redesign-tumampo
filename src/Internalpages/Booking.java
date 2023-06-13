@@ -28,7 +28,7 @@ public class Booking extends javax.swing.JFrame {
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-
+    String roomstatus = "Pending";
     /**
      * Creates new form Booking
      */
@@ -42,7 +42,7 @@ public class Booking extends javax.swing.JFrame {
     }
     public void fillcombo() throws SQLException{
           conn = DriverManager.getConnection("jdbc:mysql://localhost/house_rent", "root", "");
-          String Querry = "SELECT * FROM `tbl_rooms`";
+          String Querry = "SELECT * FROM `tbl_rooms` WHERE r_status = 'Available'";
           
           Statement st = conn.createStatement();
           pst = (PreparedStatement) conn.prepareStatement(Querry);
@@ -51,7 +51,30 @@ public class Booking extends javax.swing.JFrame {
           while(rs.next()){
           num.addItem(rs.getString("r_id"));
           }
+          
     }
+    
+    public void bookeds(){
+    Date selectedDate = jDateChooser1.getDate();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    // Format the selected date as a string
+    String selectedDateText = dateFormat.format(selectedDate);
+    Connection con = null;
+    ResultSet rst = null;
+    PreparedStatement pst = null;
+
+    
+        dpconnector dbc = new dpconnector();
+        dbc.insertData("INSERT INTO trans_table (r_id, t_id, date) "
+                + "VALUES ('"+num.getSelectedItem()+"','"+ID.getText()+"','"+selectedDateText+"')");
+        JOptionPane.showMessageDialog(null, "Successfully Registered",
+       "MESSAGE!", JOptionPane.INFORMATION_MESSAGE);
+       
+        dbc.insertData("UPDATE `tbl_rooms` SET `r_status`='"+roomstatus+"' WHERE r_id = '"+ID.getText()+"'");
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,8 +96,6 @@ public class Booking extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         num = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -120,6 +141,7 @@ public class Booking extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(224, 152, 67));
         jPanel1.setLayout(null);
@@ -155,25 +177,12 @@ public class Booking extends javax.swing.JFrame {
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 90, 27));
 
         jLabel7.setText("Estemated Arrival Date");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 130, 20));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 160, 20));
 
         jTextField3.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jTextField3.setText("  ");
         jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 310, 30));
-
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField4.setText("  ");
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 310, 30));
-
-        jLabel8.setText("Email");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 210, 27));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Contact*");
@@ -222,12 +231,15 @@ public class Booking extends javax.swing.JFrame {
         jLabel18.setText("House Number: ");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 90, 20));
 
+        jTextField5.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 210, 20));
 
+        jTextField10.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jTextField10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 210, 20));
 
+        jTextField11.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jTextField11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,9 +248,11 @@ public class Booking extends javax.swing.JFrame {
         });
         jPanel3.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 210, 20));
 
+        jTextField12.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jTextField12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 210, 20));
 
+        jTextField6.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,7 +373,7 @@ public class Booking extends javax.swing.JFrame {
         );
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 120, 40));
-        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 190, 30));
+        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 190, 30));
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(60, 90, 740, 530);
@@ -449,6 +463,7 @@ public class Booking extends javax.swing.JFrame {
         jTextField5.setText(add); 
         jTextField5.setEditable(false);
         
+        
         }
         }catch(Exception e){
         
@@ -464,10 +479,6 @@ public class Booking extends javax.swing.JFrame {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void pay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay1ActionPerformed
         // TODO add your handling code here:
@@ -505,18 +516,7 @@ public class Booking extends javax.swing.JFrame {
     }//GEN-LAST:event_IDActionPerformed
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-Date selectedDate = jDateChooser1.getDate();
-        // Create a date format for the desired date format
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        // Format the selected date as a string
-        String selectedDateText = dateFormat.format(selectedDate);
-        dpconnector dbc = new dpconnector();
-        String date = jDateChooser1.getDate().toString();
-                dbc.insertData("INSERT INTO trans_table (t_id, r_id, date) "
-                + "VALUES ('"+ID.getText()+"','"+num.getSelectedItem()+"','"+selectedDateText+"')");
-                
-        JOptionPane.showMessageDialog(null, "Successfully Registered",
-       "MESSAGE!", JOptionPane.INFORMATION_MESSAGE);
+    bookeds();
     }//GEN-LAST:event_jPanel4MouseClicked
 
     /**
@@ -581,7 +581,6 @@ Date selectedDate = jDateChooser1.getDate();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -594,7 +593,6 @@ Date selectedDate = jDateChooser1.getDate();
     private javax.swing.JTextField jTextField12;
     public javax.swing.JTextField jTextField2;
     public javax.swing.JTextField jTextField3;
-    public javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JComboBox<String> num;

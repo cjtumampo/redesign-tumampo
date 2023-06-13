@@ -9,15 +9,19 @@ import com.mysql.jdbc.PreparedStatement;
 import config.dpconnector;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -44,7 +48,7 @@ public class userset extends javax.swing.JInternalFrame {
     int s = 0;
     byte [] pimage = null;
     public byte[] imageBytes;
-
+    Connection conn = null;
     String filename=null;
     String imgPath = null;
    byte[] person_image = null; 
@@ -52,6 +56,9 @@ public class userset extends javax.swing.JInternalFrame {
     public userset() {
         initComponents();
         connect();
+        someMethod();
+        pathimage.setVisible(false);
+        idlabel.setVisible(false);
     this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
     BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
     bi.setNorthPane(null);
@@ -69,6 +76,8 @@ public class userset extends javax.swing.JInternalFrame {
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
+    
+    
     public  ImageIcon ResizeImage(String ImagePath, byte[] pic) {
     ImageIcon MyImage = null;
         if(ImagePath !=null){
@@ -94,15 +103,57 @@ public class userset extends javax.swing.JInternalFrame {
         }
         
     }
-  
+        private static ImageIcon createResizedIcon(String imagePath, int width, int height) {
+        try {
+            // Load the original image
+            BufferedImage originalImage = ImageIO.read(new File(imagePath));
+            
+            // Resize the image
+            Image resizedImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            
+            // Create a new ImageIcon with the resized image
+            return new ImageIcon(resizedImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+        }
+         
+
     public void someMethod() {
         // Access the global variable
-       String globalVariable = null; 
+       try{
+          conn = DriverManager.getConnection("jdbc:mysql://localhost/house_rent", "root", "");
+          String Querry = "SELECT * FROM `tbl_customer` WHERE `t_email` = '" +email.getText()+"'";        
+          Statement st = conn.createStatement();
+          pst = (PreparedStatement) conn.prepareStatement(Querry);
+          rs = st.executeQuery(Querry);
+
+          int iconWidth = 100;
+          int iconHeight = 100;
+          
+          
+        if(rs.next()){
+        String pathhh = rs.getString("imagepath");
+        jTextField2.setText(rs.getString("t_lname"));
+        jTextField4.setText(rs.getString("t_contact"));
+        jTextField5.setText(rs.getString("t_address"));
+        idlabel.setText(rs.getString("t_id"));
+        String imagePath = rs.getString("imagepath");
+//        ImageIcon icon = createResizedIcon(imagePath, iconWidth, iconHeight);
+//        image_display.setIcon(icon);
+        image_display.setIcon(new javax.swing.ImageIcon(getClass().getResource(""+imagePath)));
+                    
+        }
+       }catch(Exception e){       
+       }
     }
+    
+    
 
     Color navcolor = new Color(0,102,102);
     Color navbar = new Color (240,240,240);
-    Color Hdcolor = new Color (0,102,102);
+    Color Hdcolor = new Color (0,102,102);  
     Color buttons = new Color(0,153,153);
 
      dpconnector dbc = new dpconnector();
@@ -121,6 +172,7 @@ public class userset extends javax.swing.JInternalFrame {
         image_display = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         imagelabel = new javax.swing.JLabel();
+        pathimage = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -145,6 +197,7 @@ public class userset extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        idlabel = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -167,6 +220,9 @@ public class userset extends javax.swing.JInternalFrame {
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 110, 30));
         jPanel3.add(imagelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 190, 30));
+
+        pathimage.setText("jLabel5");
+        jPanel3.add(pathimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 100, 30));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 420));
 
@@ -207,13 +263,13 @@ public class userset extends javax.swing.JInternalFrame {
         jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 230, 30));
 
         jButton2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jButton2.setText("Update");
+        jButton2.setText("UPDATE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 90, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 90, 30));
 
         male.setText(" Male ");
         male.addActionListener(new java.awt.event.ActionListener() {
@@ -273,6 +329,9 @@ public class userset extends javax.swing.JInternalFrame {
         jLabel4.setText("ACCOUNT SETTINGS ");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 390, 80));
 
+        idlabel.setText("jLabel5");
+        jPanel4.add(idlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, -1, -1));
+
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 150));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
@@ -282,7 +341,7 @@ public class userset extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
- JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg", "gif", "png");
         chooser.addChoosableFileFilter(filter);
@@ -310,6 +369,7 @@ public class userset extends javax.swing.JInternalFrame {
                  bos.write(buf,0,readNum);
                 }
                 person_image=bos.toByteArray();
+                pathimage.setText(path);
                 
         }catch(Exception e){
             System.out.println(e);
@@ -319,18 +379,14 @@ public class userset extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-                    try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_rent", "root", "");
-            String sql = "INSERT INTO image_tbl (image_path, image_File) VALUES (?,?)";
-            PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql);
-            pst.setString(1, filename);            
-            pst.setBytes(2,person_image);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Successfully Updated!");
+                dpconnector dbc = new dpconnector();
+        int num = dbc.updateData("UPDATE `tbl_customer` SET `r_number`='"+jTextField4.getText()+"',`t_name`='"+jTextField1.getText()+"',`t_lname`='"+jTextField2.getText()+"',`t_address`='"+combobox.getSelectedItem()+"',`t_gender`='"+gender+"',`t_contact`='"+jTextField4.getText()+"',`t_email`='"+email.getText()+"',`imagepath`='"+pathimage.getText()+"' WHERE t_id = '"+idlabel.getText()+"'");
+
+        if(num == 0){
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Updated Successfully!");
             
-        }catch(Exception e){
-            System.out.println(e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -365,7 +421,8 @@ public class userset extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox<String> combobox;
     public javax.swing.JTextField email;
     public javax.swing.JRadioButton female;
-    private javax.swing.JLabel image_display;
+    private javax.swing.JLabel idlabel;
+    public javax.swing.JLabel image_display;
     private javax.swing.JLabel imagelabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -386,10 +443,11 @@ public class userset extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     public javax.swing.JRadioButton male;
+    private javax.swing.JLabel pathimage;
     // End of variables declaration//GEN-END:variables
 }

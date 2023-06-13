@@ -49,19 +49,19 @@ public class Userpage extends javax.swing.JInternalFrame {
     {
         try{
     dpconnector dbc = new dpconnector();
-    ResultSet rs = dbc.getData("SELECT * FROM tbl_customer");
+    ResultSet rs = dbc.getData("SELECT t_id , t_name, t_lname, t_address, t_contact, r_number  FROM tbl_customer");
     Customer_table.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(SQLException ex){
         System.out.println("Error Message");
         }
     DefaultTableModel model = (DefaultTableModel) Customer_table.getModel();
-    String[] columnIdentifiers = {"ID", "First Name","Last Name", "Address", "Gender", "Civil Status", "Contact No.", "Email"};
+    String[] columnIdentifiers = {"ID", "First Name","Last Name", "Address", "Contact no.", "Rent Status"};
     model.setColumnIdentifiers(columnIdentifiers);
     
     TableColumnModel columnModel = Customer_table.getColumnModel();
     columnModel.getColumn(0).setPreferredWidth(1);
     columnModel.getColumn(1).setPreferredWidth(50);
-    columnModel.getColumn(4).setPreferredWidth(1);
+    columnModel.getColumn(4).setPreferredWidth(100);
     Customer_table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     
     Customer_table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -70,6 +70,7 @@ public class Userpage extends javax.swing.JInternalFrame {
     Customer_table.getTableHeader().setForeground(BLACK);
     Customer_table.setRowHeight(25);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -314,19 +315,17 @@ public class Userpage extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Select a tenant to book.","Alert",JOptionPane.WARNING_MESSAGE);
         }else{
         JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        mainFrame.dispose();      
+        mainFrame.dispose();
         Booking b = new Booking();
         b.setVisible(true);
             TableModel model = Customer_table.getModel();
             b.jTextField2.setText(""+model.getValueAt(RowIndex, 1));
             b.jTextField1.setText(""+model.getValueAt(RowIndex, 2));
-            b.jTextField3.setText(model.getValueAt(RowIndex, 6).toString());
-            b.jTextField4.setText(model.getValueAt(RowIndex, 7).toString());
+            b.jTextField3.setText(model.getValueAt(RowIndex, 4).toString());
             b.ID.setText(""+model.getValueAt(RowIndex, 0));
             b.jTextField2.setEditable(false);
             b.jTextField1.setEditable(false);
             b.jTextField3.setEditable(false);
-            b.jTextField4.setEditable(false); 
             b.ID.setEditable(false);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -338,7 +337,8 @@ public class Userpage extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Select a tenant to book.","Alert",JOptionPane.WARNING_MESSAGE);
         }else{
         prints p = new prints();
-        p.setVisible(true);
+        p.setVisible(true);    
+        p.jTextArea1.setVisible(true);
         TableModel model = Customer_table.getModel();
         p.ID.setText(""+model.getValueAt(RowIndex, 0));
         p.FNAMES.setText(""+model.getValueAt(RowIndex, 1));
@@ -348,6 +348,7 @@ public class Userpage extends javax.swing.JInternalFrame {
         p.CIVIL.setText(""+model.getValueAt(RowIndex, 5));
         p.CON.setText(""+model.getValueAt(RowIndex, 6));
         p.EMAIL.setText(""+model.getValueAt(RowIndex, 7));
+        
                 }
     }//GEN-LAST:event_jButton6ActionPerformed
 

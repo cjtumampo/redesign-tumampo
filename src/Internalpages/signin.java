@@ -11,6 +11,8 @@ import config.dpconnector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import Internalpages.PanelRound;
+
 /**
  *
  * @author SCC-COMLAB
@@ -22,10 +24,13 @@ public class signin extends javax.swing.JFrame {
      */
     public signin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     String gender;
     String Stat;
     String action;
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,6 +66,7 @@ public class signin extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -185,18 +191,21 @@ public class signin extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 520, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 30, 450));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 520));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel10.setText("Home");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 190, 100));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 190, 100));
 
         jLabel11.setFont(new java.awt.Font("Stencil", 1, 48)); // NOI18N
         jLabel11.setText("\"");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 50, 50));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 50, 50));
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 260, 290));
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(0, 0, 800, 550);
@@ -352,6 +361,7 @@ public class signin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     public javax.swing.JPanel jPanel6;
     public javax.swing.JTextField l_name;
     public javax.swing.JRadioButton male;
